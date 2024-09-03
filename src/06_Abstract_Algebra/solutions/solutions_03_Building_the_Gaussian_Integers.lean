@@ -201,7 +201,7 @@ instance : euclidean_domain gaussint :=
   mul_left_not_lt := not_norm_mul_left_lt_norm,
   .. gaussint.comm_ring }
 
-example (x : gaussint) : irreducible x ↔ prime x :=
+theorem solutions_03_Building_the_Gaussian_Integers_1 (x : gaussint) : irreducible x ↔ prime x :=
 principal_ideal_ring.irreducible_iff_prime
 
 end gaussint

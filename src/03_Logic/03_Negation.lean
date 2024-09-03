@@ -3,7 +3,7 @@ import data.real.basic
 section
 variables a b : ℝ
 
-example (h : a < b) : ¬ b < a :=
+theorem 03_Negation_1 (h : a < b) : ¬ b < a :=
 begin
   intro h',
   have : a < a,
@@ -19,7 +19,7 @@ def fn_has_lb (f : ℝ → ℝ) := ∃ a, fn_lb f a
 
 variable f : ℝ → ℝ
 
-example (h : ∀ a, ∃ x, f x > a) : ¬ fn_has_ub f :=
+theorem 03_Negation_2 (h : ∀ a, ∃ x, f x > a) : ¬ fn_has_ub f :=
 begin
   intros fnub,
   cases fnub with a fnuba,
@@ -29,10 +29,10 @@ begin
   linarith
 end
 
-example (h : ∀ a, ∃ x, f x < a) : ¬ fn_has_lb f :=
+theorem 03_Negation_3 (h : ∀ a, ∃ x, f x < a) : ¬ fn_has_lb f :=
 sorry
 
-example : ¬ fn_has_ub (λ x, x) :=
+theorem 03_Negation_4 : ¬ fn_has_ub (λ x, x) :=
 sorry
 
 #check (not_le_of_gt : a > b → ¬ a ≤ b)
@@ -40,13 +40,13 @@ sorry
 #check (lt_of_not_ge : ¬ a ≥ b → a < b)
 #check (le_of_not_gt : ¬ a > b → a ≤ b)
 
-example (h : monotone f) (h' : f a < f b) : a < b :=
+theorem 03_Negation_5 (h : monotone f) (h' : f a < f b) : a < b :=
 sorry
 
-example (h : a ≤ b) (h' : f b < f a) : ¬ monotone f :=
+theorem 03_Negation_6 (h : a ≤ b) (h' : f b < f a) : ¬ monotone f :=
 sorry
 
-example :
+theorem 03_Negation_7 :
   ¬ ∀ {f : ℝ → ℝ}, monotone f → ∀ {a b}, f a ≤ f b → a ≤ b :=
 begin
   intro h,
@@ -58,7 +58,7 @@ begin
   sorry
 end
 
-example (x : ℝ) (h : ∀ ε > 0, x < ε) : x ≤ 0 :=
+theorem 03_Negation_8 (x : ℝ) (h : ∀ ε > 0, x < ε) : x ≤ 0 :=
 sorry
 
 end
@@ -66,21 +66,21 @@ end
 section
 variables {α : Type*} (P : α → Prop) (Q : Prop)
 
-example (h : ¬ ∃ x, P x) : ∀ x, ¬ P x :=
+theorem 03_Negation_9 (h : ¬ ∃ x, P x) : ∀ x, ¬ P x :=
 sorry
 
-example (h : ∀ x, ¬ P x) : ¬ ∃ x, P x :=
+theorem 03_Negation_10 (h : ∀ x, ¬ P x) : ¬ ∃ x, P x :=
 sorry
 
-example (h : ¬ ∀ x, P x) : ∃ x, ¬ P x :=
+theorem 03_Negation_11 (h : ¬ ∀ x, P x) : ∃ x, ¬ P x :=
 sorry
 
-example (h : ∃ x, ¬ P x) : ¬ ∀ x, P x :=
+theorem 03_Negation_12 (h : ∃ x, ¬ P x) : ¬ ∀ x, P x :=
 sorry
 
 open_locale classical
 
-example (h : ¬ ∀ x, P x) : ∃ x, ¬ P x :=
+theorem 03_Negation_13 (h : ¬ ∀ x, P x) : ∃ x, ¬ P x :=
 begin
   by_contradiction h',
   apply h,
@@ -90,10 +90,10 @@ begin
   exact h' ⟨x, h''⟩
 end
 
-example (h : ¬ ¬ Q) : Q :=
+theorem 03_Negation_14 (h : ¬ ¬ Q) : Q :=
 sorry
 
-example (h : Q) : ¬ ¬ Q :=
+theorem 03_Negation_15 (h : Q) : ¬ ¬ Q :=
 sorry
 
 end
@@ -102,32 +102,32 @@ open_locale classical
 section
 variable (f : ℝ → ℝ)
 
-example (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
+theorem 03_Negation_16 (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
 sorry
 
-example (h : ¬ ∀ a, ∃ x, f x > a) : fn_has_ub f :=
+theorem 03_Negation_17 (h : ¬ ∀ a, ∃ x, f x > a) : fn_has_ub f :=
 begin
   push_neg at h,
   exact h
 end
 
-example (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
+theorem 03_Negation_18 (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
 begin
   simp only [fn_has_ub, fn_ub] at h,
   push_neg at h,
   exact h
 end
 
-example (h : ¬ monotone f) : ∃ x y, x ≤ y ∧ f y < f x :=
+theorem 03_Negation_19 (h : ¬ monotone f) : ∃ x y, x ≤ y ∧ f y < f x :=
 sorry
 
-example (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
+theorem 03_Negation_20 (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
 begin
   contrapose! h,
   exact h
 end
 
-example (x : ℝ) (h : ∀ ε > 0, x ≤ ε) : x ≤ 0 :=
+theorem 03_Negation_21 (x : ℝ) (h : ∀ ε > 0, x ≤ ε) : x ≤ 0 :=
 begin
   contrapose! h,
   use x / 2,
@@ -139,16 +139,16 @@ end
 section
 variable a : ℕ
 
-example (h : 0 < 0) : a > 37 :=
+theorem 03_Negation_22 (h : 0 < 0) : a > 37 :=
 begin
   exfalso,
   apply lt_irrefl 0 h
 end
 
-example (h : 0 < 0) : a > 37 :=
+theorem 03_Negation_23 (h : 0 < 0) : a > 37 :=
 absurd h (lt_irrefl 0)
 
-example (h : 0 < 0) : a > 37 :=
+theorem 03_Negation_24 (h : 0 < 0) : a > 37 :=
 begin
   have h' : ¬ 0 < 0,
     from lt_irrefl 0,

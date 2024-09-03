@@ -20,16 +20,16 @@ section
 variables (R : Type*) [comm_ring R]
 variables a b c d : R
 
-example : (c * b) * a = b * (a * c) :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_1 : (c * b) * a = b * (a * c) :=
 by ring
 
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_2 : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 by ring
 
-example : (a + b) * (a - b) = a^2 - b^2 :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_3 : (a + b) * (a - b) = a^2 - b^2 :=
 by ring
 
-example (hyp : c = d * a + b) (hyp' : b = a * d) :
+theorem 02_Proving_Identities_in_Algebraic_Structures_4 (hyp : c = d * a + b) (hyp' : b = a * d) :
   c = 2 * a * d :=
 begin
   rw [hyp, hyp'],
@@ -100,15 +100,15 @@ end my_ring
 section
 variables {R : Type*} [ring R]
 
-example (a b : R) : a - b = a + -b :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_5 (a b : R) : a - b = a + -b :=
 sub_eq_add_neg a b
 
 end
 
-example (a b : ℝ) : a - b = a + -b :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_6 (a b : ℝ) : a - b = a + -b :=
 rfl
 
-example (a b : ℝ) : a - b = a + -b :=
+theorem 02_Proving_Identities_in_Algebraic_Structures_7 (a b : ℝ) : a - b = a + -b :=
 by reflexivity
 
 namespace my_ring

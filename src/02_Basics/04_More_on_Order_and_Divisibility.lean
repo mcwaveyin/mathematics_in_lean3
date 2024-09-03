@@ -7,7 +7,7 @@ variables a b c d : ℝ
 #check (min_le_right a b : min a b ≤ b)
 #check (le_min : c ≤ a → c ≤ b → c ≤ min a b)
 
-example : min a b = min b a :=
+theorem 04_More_on_Order_and_Divisibility_1 : min a b = min b a :=
 begin
   apply le_antisymm,
   { show min a b ≤ min b a,
@@ -20,7 +20,7 @@ begin
     apply min_le_left }
 end
 
-example : min a b = min b a :=
+theorem 04_More_on_Order_and_Divisibility_2 : min a b = min b a :=
 begin
   have h : ∀ x y, min x y ≤ min y x,
   { intros x y,
@@ -30,7 +30,7 @@ begin
   apply le_antisymm, apply h, apply h
 end
 
-example : min a b = min b a :=
+theorem 04_More_on_Order_and_Divisibility_3 : min a b = min b a :=
 begin
   apply le_antisymm,
   repeat {
@@ -39,21 +39,21 @@ begin
     apply min_le_left }
 end
 
-example : max a b = max b a :=
+theorem 04_More_on_Order_and_Divisibility_4 : max a b = max b a :=
 sorry
 
-example : min (min a b) c = min a (min b c) :=
+theorem 04_More_on_Order_and_Divisibility_5 : min (min a b) c = min a (min b c) :=
 sorry
 
 lemma aux : min a b + c ≤ min (a + c) (b + c) :=
 sorry
 
-example : min a b + c = min (a + c) (b + c) :=
+theorem 04_More_on_Order_and_Divisibility_6 : min a b + c = min (a + c) (b + c) :=
 sorry
 
 #check (abs_add : ∀ a b : ℝ, abs (a + b) ≤ abs a + abs b)
 
-example : abs a - abs b ≤ abs (a - b) :=
+theorem 04_More_on_Order_and_Divisibility_7 : abs a - abs b ≤ abs (a - b) :=
 sorry
 
 end
@@ -61,19 +61,19 @@ end
 section
 variables w x y z : ℕ
 
-example (h₀ : x ∣ y) (h₁ : y ∣ z) : x ∣ z :=
+theorem 04_More_on_Order_and_Divisibility_8 (h₀ : x ∣ y) (h₁ : y ∣ z) : x ∣ z :=
 dvd_trans h₀ h₁
 
-example : x ∣ y * x * z :=
+theorem 04_More_on_Order_and_Divisibility_9 : x ∣ y * x * z :=
 begin
   apply dvd_mul_of_dvd_left,
   apply dvd_mul_left
 end
 
-example : x ∣ x^2 :=
+theorem 04_More_on_Order_and_Divisibility_10 : x ∣ x^2 :=
 by apply dvd_mul_right
 
-example (h : x ∣ w) : x ∣ y * (x * z) + x^2 + w^2 :=
+theorem 04_More_on_Order_and_Divisibility_11 (h : x ∣ w) : x ∣ y * (x * z) + x^2 + w^2 :=
 sorry
 
 end
@@ -87,7 +87,7 @@ open nat
 #check (lcm_zero_right n : lcm n 0 = 0)
 #check (lcm_zero_left n  : lcm 0 n = 0)
 
-example : gcd m n = gcd n m :=
+theorem 04_More_on_Order_and_Divisibility_12 : gcd m n = gcd n m :=
 sorry
 
 end

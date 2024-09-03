@@ -54,7 +54,7 @@ def fn_lb (f : ℝ → ℝ) (a : ℝ) : Prop := ∀ x, a ≤ f x
 section
 variables (f g : ℝ → ℝ) (a b : ℝ)
 
-example (hfa : fn_ub f a) (hgb : fn_ub g b) :
+theorem 01_Implication_and_the_Universal_Quantifier_1 (hfa : fn_ub f a) (hgb : fn_ub g b) :
   fn_ub (λ x, f x + g x) (a + b) :=
 begin
   intro x,
@@ -64,15 +64,15 @@ begin
   apply hgb
 end
 
-example (hfa : fn_lb f a) (hgb : fn_lb g b) :
+theorem 01_Implication_and_the_Universal_Quantifier_2 (hfa : fn_lb f a) (hgb : fn_lb g b) :
   fn_lb (λ x, f x + g x) (a + b) :=
 sorry
 
-example (nnf : fn_lb f 0) (nng : fn_lb g 0) :
+theorem 01_Implication_and_the_Universal_Quantifier_3 (nnf : fn_lb f 0) (nng : fn_lb g 0) :
   fn_lb (λ x, f x * g x) 0 :=
 sorry
 
-example (hfa : fn_ub f a) (hfb : fn_ub g b)
+theorem 01_Implication_and_the_Universal_Quantifier_4 (hfa : fn_ub f a) (hfb : fn_ub g b)
     (nng : fn_lb g 0) (nna : 0 ≤ a) :
   fn_ub (λ x, f x * g x) (a * b) :=
 sorry
@@ -92,13 +92,13 @@ theorem fn_ub_add {f g : α → R} {a b : R}
 λ x, add_le_add (hfa x) (hgb x)
 end
 
-example (f : ℝ → ℝ) (h : monotone f) :
+theorem 01_Implication_and_the_Universal_Quantifier_5 (f : ℝ → ℝ) (h : monotone f) :
   ∀ {a b}, a ≤ b → f a ≤ f b := h
 
 section
 variables (f g : ℝ → ℝ)
 
-example (mf : monotone f) (mg : monotone g) :
+theorem 01_Implication_and_the_Universal_Quantifier_6 (mf : monotone f) (mg : monotone g) :
   monotone (λ x, f x + g x) :=
 begin
   intros a b aleb,
@@ -107,22 +107,22 @@ begin
   apply mg aleb
 end
 
-example (mf : monotone f) (mg : monotone g) :
+theorem 01_Implication_and_the_Universal_Quantifier_7 (mf : monotone f) (mg : monotone g) :
   monotone (λ x, f x + g x) :=
 λ a b aleb, add_le_add (mf aleb) (mg aleb)
 
-example {c : ℝ} (mf : monotone f) (nnc : 0 ≤ c) :
+theorem 01_Implication_and_the_Universal_Quantifier_8 {c : ℝ} (mf : monotone f) (nnc : 0 ≤ c) :
   monotone (λ x, c * f x) :=
 sorry
 
-example (mf : monotone f) (mg : monotone g) :
+theorem 01_Implication_and_the_Universal_Quantifier_9 (mf : monotone f) (mg : monotone g) :
   monotone (λ x, f (g x)) :=
 sorry
 
 def fn_even (f : ℝ → ℝ) : Prop := ∀ x, f x = f (-x)
 def fn_odd (f : ℝ → ℝ) : Prop := ∀ x, f x = - f (-x)
 
-example (ef : fn_even f) (eg : fn_even g) : fn_even (λ x, f x + g x) :=
+theorem 01_Implication_and_the_Universal_Quantifier_10 (ef : fn_even f) (eg : fn_even g) : fn_even (λ x, f x + g x) :=
 begin
   intro x,
   calc
@@ -130,13 +130,13 @@ begin
                     ... = f (-x) + g (-x) : by rw [ef, eg]
 end
 
-example (of : fn_odd f) (og : fn_odd g) : fn_even (λ x, f x * g x) :=
+theorem 01_Implication_and_the_Universal_Quantifier_11 (of : fn_odd f) (og : fn_odd g) : fn_even (λ x, f x * g x) :=
 sorry
 
-example (ef : fn_even f) (og : fn_odd g) : fn_odd (λ x, f x * g x) :=
+theorem 01_Implication_and_the_Universal_Quantifier_12 (ef : fn_even f) (og : fn_odd g) : fn_odd (λ x, f x * g x) :=
 sorry
 
-example (ef : fn_even f) (og : fn_odd g) : fn_even (λ x, f (g x)) :=
+theorem 01_Implication_and_the_Universal_Quantifier_13 (ef : fn_even f) (og : fn_odd g) : fn_even (λ x, f (g x)) :=
 sorry
 
 end
@@ -144,7 +144,7 @@ end
 section
 variables {α : Type*} (r s t : set α)
 
-example : s ⊆ s :=
+theorem 01_Implication_and_the_Universal_Quantifier_14 : s ⊆ s :=
 by { intros x xs, exact xs }
 
 theorem subset.refl : s ⊆ s := λ x xs, xs
@@ -161,7 +161,7 @@ variables (s : set α) (a b : α)
 
 def set_ub (s : set α) (a : α) := ∀ x, x ∈ s → x ≤ a
 
-example (h : set_ub s a) (h' : a ≤ b) : set_ub s b :=
+theorem 01_Implication_and_the_Universal_Quantifier_15 (h : set_ub s a) (h' : a ≤ b) : set_ub s b :=
 sorry
 
 end
@@ -169,19 +169,19 @@ end
 section
 open function
 
-example (c : ℝ) : injective (λ x, x + c) :=
+theorem 01_Implication_and_the_Universal_Quantifier_16 (c : ℝ) : injective (λ x, x + c) :=
 begin
   intros x₁ x₂ h',
   exact (add_left_inj c).mp h',
 end
 
-example {c : ℝ} (h : c ≠ 0) : injective (λ x, c * x) :=
+theorem 01_Implication_and_the_Universal_Quantifier_17 {c : ℝ} (h : c ≠ 0) : injective (λ x, c * x) :=
 sorry
 
 variables {α : Type*} {β : Type*} {γ : Type*}
 variables {g : β → γ} {f : α → β}
 
-example (injg : injective g) (injf : injective f) :
+theorem 01_Implication_and_the_Universal_Quantifier_18 (injg : injective g) (injf : injective f) :
   injective (λ x, g (f x)) :=
 sorry
 

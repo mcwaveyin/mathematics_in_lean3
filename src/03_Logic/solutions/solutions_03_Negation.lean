@@ -11,7 +11,7 @@ def fn_has_lb (f : ℝ → ℝ) := ∃ a, fn_lb f a
 
 variable f : ℝ → ℝ
 
-example (h : ∀ a, ∃ x, f x < a) : ¬ fn_has_lb f :=
+theorem solutions_03_Negation_1 (h : ∀ a, ∃ x, f x < a) : ¬ fn_has_lb f :=
 begin
   rintros ⟨a, ha⟩,
   rcases h a with ⟨x, hx⟩,
@@ -19,14 +19,14 @@ begin
   linarith
 end
 
-example : ¬ fn_has_ub (λ x, x) :=
+theorem solutions_03_Negation_2 : ¬ fn_has_ub (λ x, x) :=
 begin
   rintros ⟨a, ha⟩,
   have : a + 1 ≤ a := ha (a + 1),
   linarith
 end
 
-example (h : monotone f) (h' : f a < f b) : a < b :=
+theorem solutions_03_Negation_3 (h : monotone f) (h' : f a < f b) : a < b :=
 begin
   apply lt_of_not_ge,
   intro h'',
@@ -34,7 +34,7 @@ begin
   apply not_lt_of_ge (h h'')
 end
 
-example (h : a ≤ b) (h' : f b < f a) : ¬ monotone f :=
+theorem solutions_03_Negation_4 (h : a ≤ b) (h' : f b < f a) : ¬ monotone f :=
 begin
   intro h'',
   apply absurd h',
@@ -42,7 +42,7 @@ begin
   apply h'' h
 end
 
-example :
+theorem solutions_03_Negation_5 :
   ¬ ∀ {f : ℝ → ℝ}, monotone f → ∀ {a b}, f a ≤ f b → a ≤ b :=
 begin
   intro h,
@@ -56,7 +56,7 @@ begin
   linarith
 end
 
-example (x : ℝ) (h : ∀ ε > 0, x < ε) : x ≤ 0 :=
+theorem solutions_03_Negation_6 (x : ℝ) (h : ∀ ε > 0, x < ε) : x ≤ 0 :=
 begin
   apply le_of_not_gt,
   intro h',
@@ -68,20 +68,20 @@ end
 section
 variables {α : Type*} (P : α → Prop) (Q : Prop)
 
-example (h : ¬ ∃ x, P x) : ∀ x, ¬ P x :=
+theorem solutions_03_Negation_7 (h : ¬ ∃ x, P x) : ∀ x, ¬ P x :=
 begin
   intros x Px,
   apply h,
   use [x, Px]
 end
 
-example (h : ∀ x, ¬ P x) : ¬ ∃ x, P x :=
+theorem solutions_03_Negation_8 (h : ∀ x, ¬ P x) : ¬ ∃ x, P x :=
 begin
   rintros ⟨x, Px⟩,
   exact h x Px
 end
 
-example (h : ∃ x, ¬ P x) : ¬ ∀ x, P x :=
+theorem solutions_03_Negation_9 (h : ∃ x, ¬ P x) : ¬ ∀ x, P x :=
 begin
   intro h',
   rcases h with ⟨x, nPx⟩,
@@ -90,13 +90,13 @@ begin
 end
 
 
-example (h : ¬ ¬ Q) : Q :=
+theorem solutions_03_Negation_10 (h : ¬ ¬ Q) : Q :=
 begin
   by_contradiction h',
   exact h h'
 end
 
-example (h : Q) : ¬ ¬ Q :=
+theorem solutions_03_Negation_11 (h : Q) : ¬ ¬ Q :=
 begin
   intro h',
   exact h' h
@@ -108,7 +108,7 @@ open_locale classical
 section
 variable (f : ℝ → ℝ)
 
-example (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
+theorem solutions_03_Negation_12 (h : ¬ fn_has_ub f) : ∀ a, ∃ x, f x > a :=
 begin
   intro a,
   by_contradiction h',
@@ -121,7 +121,7 @@ begin
   use [x, h'']
 end
 
-example (h : ¬ monotone f) : ∃ x y, x ≤ y ∧ f y < f x :=
+theorem solutions_03_Negation_13 (h : ¬ monotone f) : ∃ x y, x ≤ y ∧ f y < f x :=
 begin
   rw [monotone] at h,
   push_neg at h,

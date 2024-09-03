@@ -25,30 +25,30 @@ variables {X : Type*} [metric_space X] (a b c : X)
 
 
 
-example {u : ℕ → X} {a : X} :
+theorem 02_Metric_Spaces_1 {u : ℕ → X} {a : X} :
   tendsto u at_top (𝓝 a) ↔ ∀ ε > 0, ∃ N, ∀ n ≥ N, dist (u n) a < ε :=
 metric.tendsto_at_top
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} :
+theorem 02_Metric_Spaces_2 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} :
   continuous f ↔
   ∀ x : X, ∀ ε > 0, ∃ δ > 0, ∀ x', dist x' x < δ → dist (f x') (f x) < ε :=
 metric.continuous_iff
 
 
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
+theorem 02_Metric_Spaces_3 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
   continuous (λ p : X × X, dist (f p.1) (f p.2)) :=
 by continuity
 
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
+theorem 02_Metric_Spaces_4 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
   continuous (λ p : X × X, dist (f p.1) (f p.2)) :=
 continuous_dist.comp ((hf.comp continuous_fst).prod_mk (hf.comp continuous_snd))
 
 
 
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
+theorem 02_Metric_Spaces_5 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
   continuous (λ p : X × X, dist (f p.1) (f p.2)) :=
 begin
   apply continuous.dist,
@@ -56,25 +56,25 @@ begin
   exact hf.comp continuous_snd
 end
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
+theorem 02_Metric_Spaces_6 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
   continuous (λ p : X × X, dist (f p.1) (f p.2)) :=
 (hf.comp continuous_fst).dist (hf.comp continuous_snd)
 
 
 
-example {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
+theorem 02_Metric_Spaces_7 {X Y : Type*} [metric_space X] [metric_space Y] {f : X → Y} (hf : continuous f) :
   continuous (λ p : X × X, dist (f p.1) (f p.2)) :=
 hf.fst'.dist hf.snd'
 
 
 
-example {f : ℝ → X} (hf : continuous f) : continuous (λ x : ℝ, f (x^2 + x)) :=
+theorem 02_Metric_Spaces_8 {f : ℝ → X} (hf : continuous f) : continuous (λ x : ℝ, f (x^2 + x)) :=
 sorry
 
 
 
 
-example {X Y : Type*} [metric_space X] [metric_space Y] (f : X → Y) (a : X) :
+theorem 02_Metric_Spaces_9 {X Y : Type*} [metric_space X] [metric_space Y] (f : X → Y) (a : X) :
 continuous_at f a ↔ ∀ ε > 0, ∃ δ > 0, ∀ {x}, dist x a < δ → dist (f x) (f a) < ε :=
 metric.continuous_at_iff
 
@@ -82,98 +82,98 @@ metric.continuous_at_iff
 
 variables r : ℝ
 
-example : metric.ball a r = {b | dist b a < r} := rfl
+theorem 02_Metric_Spaces_10 : metric.ball a r = {b | dist b a < r} := rfl
 
-example : metric.closed_ball a r = {b | dist b a ≤ r} := rfl
-
-
-
-example (hr : 0 < r) : a ∈ metric.ball a r := metric.mem_ball_self hr
-
-example (hr : 0 ≤ r) : a ∈ metric.closed_ball a r := metric.mem_closed_ball_self hr
+theorem 02_Metric_Spaces_11 : metric.closed_ball a r = {b | dist b a ≤ r} := rfl
 
 
-example (s : set X) : is_open s ↔ ∀ x ∈ s, ∃ ε > 0, metric.ball x ε ⊆ s :=
+
+theorem 02_Metric_Spaces_12 (hr : 0 < r) : a ∈ metric.ball a r := metric.mem_ball_self hr
+
+theorem 02_Metric_Spaces_13 (hr : 0 ≤ r) : a ∈ metric.closed_ball a r := metric.mem_closed_ball_self hr
+
+
+theorem 02_Metric_Spaces_14 (s : set X) : is_open s ↔ ∀ x ∈ s, ∃ ε > 0, metric.ball x ε ⊆ s :=
 metric.is_open_iff
 
 
 
-example {s : set X} : is_closed s ↔ is_open sᶜ :=
+theorem 02_Metric_Spaces_15 {s : set X} : is_closed s ↔ is_open sᶜ :=
 is_open_compl_iff.symm
 
-example {s : set X} (hs : is_closed s) {u : ℕ → X} (hu : tendsto u at_top (𝓝 a))
+theorem 02_Metric_Spaces_16 {s : set X} (hs : is_closed s) {u : ℕ → X} (hu : tendsto u at_top (𝓝 a))
   (hus : ∀ n, u n ∈ s) : a ∈ s :=
 hs.mem_of_tendsto hu (eventually_of_forall hus)
 
-example {s : set X} : a ∈ closure s ↔ ∀ ε > 0, ∃ b ∈ s, a ∈ metric.ball b ε :=
+theorem 02_Metric_Spaces_17 {s : set X} : a ∈ closure s ↔ ∀ ε > 0, ∃ b ∈ s, a ∈ metric.ball b ε :=
 metric.mem_closure_iff
 
 
-example {u : ℕ → X} (hu : tendsto u at_top (𝓝 a)) {s : set X} (hs : ∀ n, u n ∈ s) :
+theorem 02_Metric_Spaces_18 {u : ℕ → X} (hu : tendsto u at_top (𝓝 a)) {s : set X} (hs : ∀ n, u n ∈ s) :
   a ∈ closure s :=
 sorry
 
 
 
-example {x : X} {s : set X} : s ∈ 𝓝 x ↔ ∃ ε > 0, metric.ball x ε ⊆ s :=
+theorem 02_Metric_Spaces_19 {x : X} {s : set X} : s ∈ 𝓝 x ↔ ∃ ε > 0, metric.ball x ε ⊆ s :=
 metric.nhds_basis_ball.mem_iff
 
-example {x : X} {s : set X} : s ∈ 𝓝 x ↔ ∃ ε > 0, metric.closed_ball x ε ⊆ s :=
+theorem 02_Metric_Spaces_20 {x : X} {s : set X} : s ∈ 𝓝 x ↔ ∃ ε > 0, metric.closed_ball x ε ⊆ s :=
 metric.nhds_basis_closed_ball.mem_iff
 
 
 
 
-example : is_compact (set.Icc 0 1 : set ℝ) :=
+theorem 02_Metric_Spaces_21 : is_compact (set.Icc 0 1 : set ℝ) :=
 is_compact_Icc
 
-example {s : set X} (hs : is_compact s) {u : ℕ → X} (hu : ∀ n, u n ∈ s) :
+theorem 02_Metric_Spaces_22 {s : set X} (hs : is_compact s) {u : ℕ → X} (hu : ∀ n, u n ∈ s) :
   ∃ a ∈ s, ∃ φ : ℕ → ℕ, strict_mono φ ∧ tendsto (u ∘ φ) at_top (𝓝 a) :=
 hs.tendsto_subseq hu
 
-example {s : set X} (hs : is_compact s) (hs' : s.nonempty)
+theorem 02_Metric_Spaces_23 {s : set X} (hs : is_compact s) (hs' : s.nonempty)
   {f : X → ℝ} (hfs : continuous_on f s) :
   ∃ x ∈ s, ∀ y ∈ s, f x ≤ f y :=
 hs.exists_forall_le hs' hfs
 
-example {s : set X} (hs : is_compact s) (hs' : s.nonempty)
+theorem 02_Metric_Spaces_24 {s : set X} (hs : is_compact s) (hs' : s.nonempty)
   {f : X → ℝ} (hfs : continuous_on f s) :
   ∃ x ∈ s, ∀ y ∈ s, f y ≤ f x :=
 hs.exists_forall_ge hs' hfs
 
-example {s : set X} (hs : is_compact s) : is_closed s :=
+theorem 02_Metric_Spaces_25 {s : set X} (hs : is_compact s) : is_closed s :=
 hs.is_closed
 
 
 
-example {X : Type*} [metric_space X] [compact_space X] : is_compact (univ : set X) :=
+theorem 02_Metric_Spaces_26 {X : Type*} [metric_space X] [compact_space X] : is_compact (univ : set X) :=
 is_compact_univ
 
 
 #check is_compact.is_closed
 
 
-example {X : Type*} [metric_space X] {Y : Type*} [metric_space Y] {f : X → Y} :
+theorem 02_Metric_Spaces_27 {X : Type*} [metric_space X] {Y : Type*} [metric_space Y] {f : X → Y} :
   uniform_continuous f ↔ ∀ ε > 0, ∃ δ > 0, ∀ {a b : X}, dist a b < δ → dist (f a) (f b) < ε :=
 metric.uniform_continuous_iff
 
 
 
-example {X : Type*} [metric_space X] [compact_space X] {Y : Type*} [metric_space Y]
+theorem 02_Metric_Spaces_28 {X : Type*} [metric_space X] [compact_space X] {Y : Type*} [metric_space Y]
   {f : X → Y} (hf : continuous f) : uniform_continuous f :=
 sorry
 
 
 
 
-example (u : ℕ → X) : cauchy_seq u ↔ ∀ ε > 0, ∃ N : ℕ, ∀ m ≥ N,  ∀ n ≥ N, dist (u m) (u n) < ε :=
+theorem 02_Metric_Spaces_29 (u : ℕ → X) : cauchy_seq u ↔ ∀ ε > 0, ∃ N : ℕ, ∀ m ≥ N,  ∀ n ≥ N, dist (u m) (u n) < ε :=
 metric.cauchy_seq_iff
 
-example (u : ℕ → X) : cauchy_seq u ↔ ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, dist (u n) (u N) < ε :=
+theorem 02_Metric_Spaces_30 (u : ℕ → X) : cauchy_seq u ↔ ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, dist (u n) (u N) < ε :=
 metric.cauchy_seq_iff'
 
 
-example [complete_space X] (u : ℕ → X) (hu : cauchy_seq u) : ∃ x, tendsto u at_top (𝓝 x) :=
+theorem 02_Metric_Spaces_31 [complete_space X] (u : ℕ → X) (hu : cauchy_seq u) : ∃ x, tendsto u at_top (𝓝 x) :=
 cauchy_seq_tendsto_of_complete hu
 
 
@@ -203,7 +203,7 @@ end
 
 open metric
 
-example [complete_space X] (f : ℕ → set X) (ho : ∀ n, is_open (f n)) (hd : ∀ n, dense (f n)) : dense (⋂n, f n) :=
+theorem 02_Metric_Spaces_32 [complete_space X] (f : ℕ → set X) (ho : ∀ n, is_open (f n)) (hd : ∀ n, dense (f n)) : dense (⋂n, f n) :=
 begin
   let B : ℕ → ℝ := λ n, (1/2)^n,
   have Bpos : ∀ n, 0 < B n, sorry,

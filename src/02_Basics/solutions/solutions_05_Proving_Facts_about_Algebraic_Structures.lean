@@ -4,7 +4,7 @@ section
 variables {α : Type*} [lattice α]
 variables x y z : α
 
-example : x ⊓ y = y ⊓ x :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_1 : x ⊓ y = y ⊓ x :=
 begin
   apply le_antisymm,
   repeat {
@@ -13,7 +13,7 @@ begin
     apply inf_le_left }
 end
 
-example : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_2 : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) :=
 begin
   apply le_antisymm,
   { apply le_inf,
@@ -36,7 +36,7 @@ begin
   apply inf_le_right
 end
 
-example : x ⊔ y = y ⊔ x :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_3 : x ⊔ y = y ⊔ x :=
 begin
   apply le_antisymm,
   repeat {
@@ -45,7 +45,7 @@ begin
     apply le_sup_left }
 end
 
-example : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_4 : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) :=
 begin
   apply le_antisymm,
   { apply sup_le,
@@ -103,12 +103,12 @@ section
 variables {α : Type*} [lattice α]
 variables a b c : α
 
-example (h : ∀ x y z : α, x ⊓ (y ⊔ z) = (x ⊓ y) ⊔ (x ⊓ z)) :
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_5 (h : ∀ x y z : α, x ⊓ (y ⊔ z) = (x ⊓ y) ⊔ (x ⊓ z)) :
   a ⊔ (b ⊓ c) = (a ⊔ b) ⊓ (a ⊔ c) :=
 by rw [h, @inf_comm _ _ (a ⊔ b), absorb1, @inf_comm _ _ (a ⊔ b), h,
     ←sup_assoc, @inf_comm _ _ c a, absorb2, inf_comm]
 
-example (h : ∀ x y z : α, x ⊔ (y ⊓ z) = (x ⊔ y) ⊓ (x ⊔ z)) :
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_6 (h : ∀ x y z : α, x ⊔ (y ⊓ z) = (x ⊔ y) ⊓ (x ⊔ z)) :
   a ⊓ (b ⊔ c) = (a ⊓ b) ⊔ (a ⊓ c) :=
 by rw [h, @sup_comm _ _ (a ⊓ b), absorb2, @sup_comm _ _ (a ⊓ b), h,
     ←inf_assoc, @sup_comm _ _ c a, absorb1, sup_comm]
@@ -133,7 +133,7 @@ begin
   apply add_le_add_left h
 end
 
-example (h : a ≤ b) (h' : 0 ≤ c) : a * c ≤ b * c :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_7 (h : a ≤ b) (h' : 0 ≤ c) : a * c ≤ b * c :=
 begin
   have h1 : 0 ≤ (b - a) * c,
   { exact mul_nonneg (aux1 _ _ h) h' },
@@ -147,7 +147,7 @@ section
 variables {X : Type*} [metric_space X]
 variables x y z : X
 
-example (x y : X) : 0 ≤ dist x y :=
+theorem solutions_05_Proving_Facts_about_Algebraic_Structures_8 (x y : X) : 0 ≤ dist x y :=
 begin
   have : 0 ≤ dist x y + dist y x,
   { rw [←dist_self x],

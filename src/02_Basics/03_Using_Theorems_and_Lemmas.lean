@@ -16,32 +16,32 @@ variables (h : a ≤ b) (h' : b ≤ c)
 #check (le_trans h h' : a ≤ c)
 end
 
-example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
+theorem 03_Using_Theorems_and_Lemmas_1 (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
 begin
   apply le_trans,
   { apply h₀ },
   apply h₁
 end
 
-example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
+theorem 03_Using_Theorems_and_Lemmas_2 (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
 begin
   apply le_trans h₀,
   apply h₁
 end
 
-example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
+theorem 03_Using_Theorems_and_Lemmas_3 (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
 by exact le_trans h₀ h₁
 
-example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
+theorem 03_Using_Theorems_and_Lemmas_4 (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z :=
 le_trans h₀ h₁
 
-example (x : ℝ) : x ≤ x :=
+theorem 03_Using_Theorems_and_Lemmas_5 (x : ℝ) : x ≤ x :=
 by apply le_refl
 
-example (x : ℝ) : x ≤ x :=
+theorem 03_Using_Theorems_and_Lemmas_6 (x : ℝ) : x ≤ x :=
 by exact le_refl x
 
-example (x : ℝ) : x ≤ x :=
+theorem 03_Using_Theorems_and_Lemmas_7 (x : ℝ) : x ≤ x :=
 le_refl x
 
 #check (le_refl  : ∀ a, a ≤ a)
@@ -52,23 +52,23 @@ le_refl x
 
 /- Try this. -/
 
-example (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d)
+theorem 03_Using_Theorems_and_Lemmas_8 (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d)
     (h₃ : d < e) :
   a < e :=
 sorry
 
-example (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d)
+theorem 03_Using_Theorems_and_Lemmas_9 (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d)
     (h₃ : d < e) :
   a < e :=
 by linarith
 
 section
-example (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) :
+theorem 03_Using_Theorems_and_Lemmas_10 (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) :
   d + a ≤ 5 * b :=
 by linarith
 end
 
-example (h : 1 ≤ a) (h' : b ≤ c) :
+theorem 03_Using_Theorems_and_Lemmas_11 (h : 1 ≤ a) (h' : b ≤ c) :
   2 + a + exp b ≤ 3 * a + exp c :=
 by linarith [exp_le_exp.mpr h']
 
@@ -89,13 +89,13 @@ by linarith [exp_le_exp.mpr h']
 #check (exp_pos : ∀ a, 0 < exp a)
 
 #check @add_le_add_left
-example (h : a ≤ b) : exp a ≤ exp b :=
+theorem 03_Using_Theorems_and_Lemmas_12 (h : a ≤ b) : exp a ≤ exp b :=
 begin
   rw exp_le_exp,
   exact h
 end
 
-example (h₀ : a ≤ b) (h₁ : c < d) : a + exp c + e < b + exp d + e :=
+theorem 03_Using_Theorems_and_Lemmas_13 (h₀ : a ≤ b) (h₁ : c < d) : a + exp c + e < b + exp d + e :=
 begin
   apply add_lt_add_of_lt_of_le,
   { apply add_lt_add_of_le_of_lt h₀,
@@ -103,15 +103,15 @@ begin
   apply le_refl
 end
 
-example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) :=
+theorem 03_Using_Theorems_and_Lemmas_14 (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) :=
 begin
   sorry
 end
 
-example : (0 : ℝ) < 1 :=
+theorem 03_Using_Theorems_and_Lemmas_15 : (0 : ℝ) < 1 :=
 by norm_num
 
-example (h : a ≤ b) : log (1 + exp a) ≤ log (1 + exp b) :=
+theorem 03_Using_Theorems_and_Lemmas_16 (h : a ≤ b) : log (1 + exp a) ≤ log (1 + exp b) :=
 begin
   have h₀ : 0 < 1 + exp a,
   { sorry },
@@ -127,10 +127,10 @@ end
       exact pow_two_nonneg a
     end
 
-example (h : a ≤ b) : c - exp b ≤ c - exp a :=
+theorem 03_Using_Theorems_and_Lemmas_17 (h : a ≤ b) : c - exp b ≤ c - exp a :=
   sorry
 
-example : 2*a*b ≤ a^2 + b^2 :=
+theorem 03_Using_Theorems_and_Lemmas_18 : 2*a*b ≤ a^2 + b^2 :=
 begin
   have h : 0 ≤ a^2 - 2*a*b + b^2,
   calc
@@ -143,7 +143,7 @@ begin
     ... = a^2 + b^2                   : by ring
 end
 
-example : 2*a*b ≤ a^2 + b^2 :=
+theorem 03_Using_Theorems_and_Lemmas_19 : 2*a*b ≤ a^2 + b^2 :=
 begin
   have h : 0 ≤ a^2 - 2*a*b + b^2,
   calc
@@ -152,7 +152,7 @@ begin
   linarith
 end
 
-example : abs (a*b) ≤ (a^2 + b^2) / 2 :=
+theorem 03_Using_Theorems_and_Lemmas_20 : abs (a*b) ≤ (a^2 + b^2) / 2 :=
 sorry
 
 #check abs_le'.mpr

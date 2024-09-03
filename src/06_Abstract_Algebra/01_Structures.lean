@@ -5,7 +5,7 @@ import data.real.basic
 
 #check point.ext
 
-example (a b : point) (hx : a.x = b.x) (hy : a.y = b.y) (hz : a.z = b.z) :
+theorem 01_Structures_1 (a b : point) (hx : a.x = b.x) (hy : a.y = b.y) (hz : a.z = b.z) :
   a = b :=
 begin
   ext,
@@ -57,7 +57,7 @@ begin
   repeat { apply add_comm }
 end
 
-example (a b : point) : add a b = add b a :=
+theorem 01_Structures_2 (a b : point) : add a b = add b a :=
 by simp [add, add_comm]
 
 theorem add_x (a b : point) : (a.add b).x = a.x + b.x := rfl
@@ -81,20 +81,20 @@ begin
   repeat { apply add_comm },
 end
 
-example (a b : point) : add_alt a b = add_alt b a :=
+theorem 01_Structures_3 (a b : point) : add_alt a b = add_alt b a :=
 begin
   rcases a with ⟨xa, ya, za⟩,
   rcases b with ⟨xb, yb, zb⟩,
   simp [add_alt, add_comm]
 end
 
-example : ∀ a b : point, add_alt a b = add_alt b a :=
+theorem 01_Structures_4 : ∀ a b : point, add_alt a b = add_alt b a :=
 begin
   rintros ⟨xa, ya, za⟩ ⟨xb, yb, zb⟩,
   simp [add_alt, add_comm]
 end
 
-example : ∀ a b : point, add a b = add b a :=
+theorem 01_Structures_5 : ∀ a b : point, add a b = add b a :=
 λ ⟨xa, ya, za⟩ ⟨xb, yb, zb⟩, by simp [add, add_comm]
 
 protected theorem add_assoc (a b c : point) :

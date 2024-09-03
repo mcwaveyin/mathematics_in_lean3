@@ -14,7 +14,7 @@ theorem fn_ub_add {f g : ℝ → ℝ} {a b : ℝ}
 section
 variables {f g : ℝ → ℝ}
 
-example (lbf : fn_has_lb f) (lbg : fn_has_lb g) :
+theorem solutions_02_The_Existential_Quantifier_1 (lbf : fn_has_lb f) (lbg : fn_has_lb g) :
   fn_has_lb (λ x, f x + g x) :=
 begin
   cases lbf with a lbfa,
@@ -24,7 +24,7 @@ begin
   exact add_le_add (lbfa x) (lbgb x)
 end
 
-example {c : ℝ} (ubf : fn_has_ub f) (h : c ≥ 0):
+theorem solutions_02_The_Existential_Quantifier_2 {c : ℝ} (ubf : fn_has_ub f) (h : c ≥ 0):
   fn_has_ub (λ x, c * f x) :=
 begin
   cases ubf with a lbfa,
@@ -38,14 +38,14 @@ end
 section
 variables {a b c : ℕ}
 
-example (divab : a ∣ b) (divbc : b ∣ c) : a ∣ c :=
+theorem solutions_02_The_Existential_Quantifier_3 (divab : a ∣ b) (divbc : b ∣ c) : a ∣ c :=
 begin
   rcases divab with ⟨d, rfl⟩,
   rcases divbc with ⟨e, rfl⟩,
   use (d * e), ring
 end
 
-example (divab : a ∣ b) (divac : a ∣ c) : a ∣ (b + c) :=
+theorem solutions_02_The_Existential_Quantifier_4 (divab : a ∣ b) (divac : a ∣ c) : a ∣ (b + c) :=
 begin
   rcases divab with ⟨d, rfl⟩,
   rcases divac with ⟨e, rfl⟩,
@@ -57,14 +57,14 @@ end
 section
 open function
 
-example {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
+theorem solutions_02_The_Existential_Quantifier_5 {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
 begin
   intro x,
   use x / c,
   dsimp, rw [mul_div_cancel' _ h]
 end
 
-example {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
+theorem solutions_02_The_Existential_Quantifier_6 {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
 begin
   intro x,
   use x / c,
@@ -78,7 +78,7 @@ open function
 variables {α : Type*} {β : Type*} {γ : Type*}
 variables {g : β → γ} {f : α → β}
 
-example (surjg : surjective g) (surjf : surjective f) :
+theorem solutions_02_The_Existential_Quantifier_7 (surjg : surjective g) (surjf : surjective f) :
   surjective (λ x, g (f x)) :=
 begin
   intro z,

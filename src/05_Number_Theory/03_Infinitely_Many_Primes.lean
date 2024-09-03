@@ -12,14 +12,14 @@ begin
   apply zero_le
 end
 
-example {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
+theorem 03_Infinitely_Many_Primes_1 {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
 begin
   by_contradiction h,
   push_neg at h,
   interval_cases m; contradiction
 end
 
-example {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
+theorem 03_Infinitely_Many_Primes_2 {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
 begin
   by_contradiction h,
   push_neg at h,
@@ -27,10 +27,10 @@ begin
   dec_trivial
 end
 
-example {m : ℕ} (h : m < 2) : m = 0 ∨ m = 1 :=
+theorem 03_Infinitely_Many_Primes_3 {m : ℕ} (h : m < 2) : m = 0 ∨ m = 1 :=
 by dec_trivial!
 
-example {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
+theorem 03_Infinitely_Many_Primes_4 {m : ℕ} (h0 : m ≠ 0) (h1 : m ≠ 1) : 2 ≤ m :=
 by omega
 
 theorem exists_prime_factor {n : nat} (h : 2 ≤ n) :
@@ -76,7 +76,7 @@ open finset
 section
 variables {α : Type*} [decidable_eq α] (r s t : finset α)
 
-example : r ∩ (s ∪ t) ⊆ (r ∩ s) ∪ (r ∩ t) :=
+theorem 03_Infinitely_Many_Primes_5 : r ∩ (s ∪ t) ⊆ (r ∩ s) ∪ (r ∩ t) :=
 begin
   rw subset_iff,
   intro x,
@@ -84,13 +84,13 @@ begin
   tauto
 end
 
-example : r ∩ (s ∪ t) ⊆ (r ∩ s) ∪ (r ∩ t) :=
+theorem 03_Infinitely_Many_Primes_6 : r ∩ (s ∪ t) ⊆ (r ∩ s) ∪ (r ∩ t) :=
 by { simp [subset_iff], intro x, tauto }
 
-example : (r ∩ s) ∪ (r ∩ t) ⊆ r ∩ (s ∪ t) :=
+theorem 03_Infinitely_Many_Primes_7 : (r ∩ s) ∪ (r ∩ t) ⊆ r ∩ (s ∪ t) :=
 by { simp [subset_iff], intro x, tauto }
 
-example : (r ∩ s) ∪ (r ∩ t) = r ∩ (s ∪ t) :=
+theorem 03_Infinitely_Many_Primes_8 : (r ∩ s) ∪ (r ∩ t) = r ∩ (s ∪ t) :=
 by { ext x, simp, tauto }
 
 end
@@ -98,14 +98,14 @@ end
 section
 variables {α : Type*} [decidable_eq α] (r s t : finset α)
 
-example : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
+theorem 03_Infinitely_Many_Primes_9 : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
 sorry
 
-example : (r \ s \ t) = r \ (s ∪ t) :=
+theorem 03_Infinitely_Many_Primes_10 : (r \ s \ t) = r \ (s ∪ t) :=
 sorry
 
 end
-example (s : finset ℕ) (n : ℕ) (h : n ∈ s) : n ∣ (∏ i in s, i) :=
+theorem 03_Infinitely_Many_Primes_11 (s : finset ℕ) (n : ℕ) (h : n ∈ s) : n ∣ (∏ i in s, i) :=
 finset.dvd_prod_of_mem _ h
 
 theorem nat.prime.eq_of_dvd_of_prime {p q : ℕ}
@@ -125,7 +125,7 @@ begin
   sorry
 end
 
-example (s : finset ℕ) (x : ℕ) : x ∈ s.filter nat.prime ↔ x ∈ s ∧ x.prime :=
+theorem 03_Infinitely_Many_Primes_12 (s : finset ℕ) (x : ℕ) : x ∈ s.filter nat.prime ↔ x ∈ s ∧ x.prime :=
 mem_filter
 
 theorem primes_infinite' : ∀ (s : finset nat), ∃ p, nat.prime p ∧ p ∉ s :=
@@ -170,9 +170,9 @@ begin
   exact hn k
 end
 
-example : 27 % 4 = 3 := by norm_num
+theorem 03_Infinitely_Many_Primes_13 : 27 % 4 = 3 := by norm_num
 
-example (n : ℕ) : (4 * n + 3) % 4 = 3 :=
+theorem 03_Infinitely_Many_Primes_14 (n : ℕ) : (4 * n + 3) % 4 = 3 :=
 by { rw [add_comm, nat.add_mul_mod_self_left], norm_num }
 
 theorem mod_4_eq_3_or_mod_4_eq_3 {m n : ℕ} (h : m * n % 4 = 3) :
@@ -215,10 +215,10 @@ begin
   sorry
 end
 
-example (m n : ℕ) (s : finset ℕ) (h : m ∈ erase s n) : m ≠ n ∧ m ∈ s :=
+theorem 03_Infinitely_Many_Primes_15 (m n : ℕ) (s : finset ℕ) (h : m ∈ erase s n) : m ≠ n ∧ m ∈ s :=
 by rwa mem_erase at h
 
-example (m n : ℕ) (s : finset ℕ) (h : m ∈ erase s n) : m ≠ n ∧ m ∈ s :=
+theorem 03_Infinitely_Many_Primes_16 (m n : ℕ) (s : finset ℕ) (h : m ∈ erase s n) : m ≠ n ∧ m ∈ s :=
 by { simp at h, assumption }
 
 theorem primes_mod_4_eq_3_infinite : ∀ n, ∃ p > n, nat.prime p ∧ p % 4 = 3 :=

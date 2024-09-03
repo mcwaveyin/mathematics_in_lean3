@@ -74,11 +74,11 @@ end
 end my_abs
 end
 
-example {z : ℝ} (h : ∃ x y, z = x^2 + y^2 ∨ z = x^2 + y^2 + 1) :
+theorem solutions_05_Disjunction_1 {z : ℝ} (h : ∃ x y, z = x^2 + y^2 ∨ z = x^2 + y^2 + 1) :
   z ≥ 0 :=
 by { rcases h with ⟨x, y, rfl | rfl⟩; linarith [sq_nonneg x, sq_nonneg y] }
 
-example {x : ℝ} (h : x^2 = 1) : x = 1 ∨ x = -1 :=
+theorem solutions_05_Disjunction_2 {x : ℝ} (h : x^2 = 1) : x = 1 ∨ x = -1 :=
 begin
   have h' : x^2 - 1 = 0,
   { rw [h, sub_self] },
@@ -92,7 +92,7 @@ begin
   exact eq_of_sub_eq_zero h1
 end
 
-example {x y : ℝ} (h : x^2 = y^2) : x = y ∨ x = -y :=
+theorem solutions_05_Disjunction_3 {x y : ℝ} (h : x^2 = y^2) : x = y ∨ x = -y :=
 begin
   have h' : x^2 - y^2 = 0,
   { rw [h, sub_self] },
@@ -110,7 +110,7 @@ section
 variables {R : Type*} [comm_ring R] [is_domain R]
 variables (x y : R)
 
-example (h : x^2 = 1) : x = 1 ∨ x = -1 :=
+theorem solutions_05_Disjunction_4 (h : x^2 = 1) : x = 1 ∨ x = -1 :=
 begin
   have h' : x^2 - 1 = 0,
   { rw [h, sub_self] },
@@ -124,7 +124,7 @@ begin
   exact eq_of_sub_eq_zero h1
 end
 
-example (h : x^2 = y^2) : x = y ∨ x = -y :=
+theorem solutions_05_Disjunction_5 (h : x^2 = y^2) : x = y ∨ x = -y :=
 begin
   have h' : x^2 - y^2 = 0,
   { rw [h, sub_self] },
@@ -143,7 +143,7 @@ end
 section
 open_locale classical
 
-example (P Q : Prop) : (P → Q) ↔ ¬ P ∨ Q :=
+theorem solutions_05_Disjunction_6 (P Q : Prop) : (P → Q) ↔ ¬ P ∨ Q :=
 begin
   split,
   { intro h,

@@ -1,19 +1,19 @@
 import data.real.basic
 
-example : ∃ x : ℝ, 2 < x ∧ x < 3 :=
+theorem 02_The_Existential_Quantifier_1 : ∃ x : ℝ, 2 < x ∧ x < 3 :=
 begin
   use 5 / 2,
   norm_num
 end
 
-example : ∃ x : ℝ, 2 < x ∧ x < 3 :=
+theorem 02_The_Existential_Quantifier_2 : ∃ x : ℝ, 2 < x ∧ x < 3 :=
 begin
   have h : 2 < (5 : ℝ) / 2 ∧ (5 : ℝ) / 2 < 3,
     by norm_num,
   exact ⟨5 / 2, h⟩
 end
 
-example : ∃ x : ℝ, 2 < x ∧ x < 3 :=
+theorem 02_The_Existential_Quantifier_3 : ∃ x : ℝ, 2 < x ∧ x < 3 :=
 ⟨5 / 2, by norm_num⟩
 
 def fn_ub (f : ℝ → ℝ) (a : ℝ) : Prop := ∀ x, f x ≤ a
@@ -31,7 +31,7 @@ theorem fn_ub_add {f g : ℝ → ℝ} {a b : ℝ}
 section
 variables {f g : ℝ → ℝ}
 
-example (ubf : fn_has_ub f) (ubg : fn_has_ub g) :
+theorem 02_The_Existential_Quantifier_4 (ubf : fn_has_ub f) (ubg : fn_has_ub g) :
   fn_has_ub (λ x, f x + g x) :=
 begin
   cases ubf with a ubfa,
@@ -40,15 +40,15 @@ begin
   apply fn_ub_add ubfa ubfb
 end
 
-example (lbf : fn_has_lb f) (lbg : fn_has_lb g) :
+theorem 02_The_Existential_Quantifier_5 (lbf : fn_has_lb f) (lbg : fn_has_lb g) :
   fn_has_lb (λ x, f x + g x) :=
 sorry
 
-example {c : ℝ} (ubf : fn_has_ub f) (h : c ≥ 0):
+theorem 02_The_Existential_Quantifier_6 {c : ℝ} (ubf : fn_has_ub f) (h : c ≥ 0):
   fn_has_ub (λ x, c * f x) :=
 sorry
 
-example (ubf : fn_has_ub f) (ubg : fn_has_ub g) :
+theorem 02_The_Existential_Quantifier_7 (ubf : fn_has_ub f) (ubg : fn_has_ub g) :
   fn_has_ub (λ x, f x + g x) :=
 begin
   rcases ubf with ⟨a, ubfa⟩,
@@ -56,14 +56,14 @@ begin
   exact ⟨a + b, fn_ub_add ubfa ubfb⟩
 end
 
-example : fn_has_ub f → fn_has_ub g →
+theorem 02_The_Existential_Quantifier_8 : fn_has_ub f → fn_has_ub g →
   fn_has_ub (λ x, f x + g x) :=
 begin
   rintros ⟨a, ubfa⟩ ⟨b, ubfb⟩,
   exact ⟨a + b, fn_ub_add ubfa ubfb⟩
 end
 
-example : fn_has_ub f → fn_has_ub g →
+theorem 02_The_Existential_Quantifier_9 : fn_has_ub f → fn_has_ub g →
   fn_has_ub (λ x, f x + g x) :=
 λ ⟨a, ubfa⟩ ⟨b, ubfb⟩, ⟨a + b, fn_ub_add ubfa ubfb⟩
 
@@ -98,7 +98,7 @@ end
 section
 variables {a b c : ℕ}
 
-example (divab : a ∣ b) (divbc : b ∣ c) : a ∣ c :=
+theorem 02_The_Existential_Quantifier_10 (divab : a ∣ b) (divbc : b ∣ c) : a ∣ c :=
 begin
   cases divab with d beq,
   cases divbc with e ceq,
@@ -106,7 +106,7 @@ begin
   use (d * e), ring
 end
 
-example (divab : a ∣ b) (divac : a ∣ c) : a ∣ (b + c) :=
+theorem 02_The_Existential_Quantifier_11 (divab : a ∣ b) (divac : a ∣ c) : a ∣ (b + c) :=
 sorry
 
 end
@@ -114,20 +114,20 @@ end
 section
 open function
 
-example {c : ℝ} : surjective (λ x, x + c) :=
+theorem 02_The_Existential_Quantifier_12 {c : ℝ} : surjective (λ x, x + c) :=
 begin
   intro x,
   use x - c,
   dsimp, ring
 end
 
-example {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
+theorem 02_The_Existential_Quantifier_13 {c : ℝ} (h : c ≠ 0) : surjective (λ x, c * x) :=
 sorry
 
-example (x y : ℝ) (h : x - y ≠ 0) : (x^2 - y^2) / (x - y) = x + y :=
+theorem 02_The_Existential_Quantifier_14 (x y : ℝ) (h : x - y ≠ 0) : (x^2 - y^2) / (x - y) = x + y :=
 by { field_simp [h], ring }
 
-example {f : ℝ → ℝ} (h : surjective f) : ∃ x, (f x)^2 = 4 :=
+theorem 02_The_Existential_Quantifier_15 {f : ℝ → ℝ} (h : surjective f) : ∃ x, (f x)^2 = 4 :=
 begin
   cases h 2 with x hx,
   use x,
@@ -142,7 +142,7 @@ open function
 variables {α : Type*} {β : Type*} {γ : Type*}
 variables {g : β → γ} {f : α → β}
 
-example (surjg : surjective g) (surjf : surjective f) :
+theorem 02_The_Existential_Quantifier_16 (surjg : surjective g) (surjf : surjective f) :
   surjective (λ x, g (f x)) :=
 sorry
 

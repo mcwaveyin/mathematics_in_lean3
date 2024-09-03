@@ -56,11 +56,11 @@ by { use [0, 1], rw [ne, gaussint.ext_iff], simp }
 
 end gaussint
 
-example (a b : ℤ) : a = b * (a / b) + a % b := eq.symm $ int.div_add_mod a b
+theorem 03_Building_the_Gaussian_Integers_1 (a b : ℤ) : a = b * (a / b) + a % b := eq.symm $ int.div_add_mod a b
 
-example (a b : ℤ) : b ≠ 0 → 0 ≤ a % b := int.mod_nonneg a
+theorem 03_Building_the_Gaussian_Integers_2 (a b : ℤ) : b ≠ 0 → 0 ≤ a % b := int.mod_nonneg a
 
-example (a b : ℤ) : b ≠ 0 → a % b < abs b := int.mod_lt a
+theorem 03_Building_the_Gaussian_Integers_3 (a b : ℤ) : b ≠ 0 → a % b < abs b := int.mod_lt a
 
 namespace int
 
@@ -189,7 +189,7 @@ instance : euclidean_domain gaussint :=
   mul_left_not_lt := not_norm_mul_left_lt_norm,
   .. gaussint.comm_ring }
 
-example (x : gaussint) : irreducible x ↔ prime x :=
+theorem 03_Building_the_Gaussian_Integers_4 (x : gaussint) : irreducible x ↔ prime x :=
 principal_ideal_ring.irreducible_iff_prime
 
 end gaussint

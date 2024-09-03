@@ -8,7 +8,7 @@ begin
   cases h; assumption
 end
 
-example {m n : ℕ} (coprime_mn : m.coprime n) : m^2 ≠ 2 * n^2 :=
+theorem solutions_01_Irrational_Roots_1 {m n : ℕ} (coprime_mn : m.coprime n) : m^2 ≠ 2 * n^2 :=
 begin
   intro sqr_eq,
   have : 2 ∣ m,
@@ -31,7 +31,7 @@ begin
   norm_num at this
 end
 
-example {m n p : ℕ} (coprime_mn : m.coprime n) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
+theorem solutions_01_Irrational_Roots_2 {m n p : ℕ} (coprime_mn : m.coprime n) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
 begin
   intro sqr_eq,
   have : p ∣ m,
@@ -72,7 +72,7 @@ theorem nat.prime.factorization' {p : ℕ} (prime_p : p.prime) :
 by { rw prime_p.factorization, simp }
 
 
-example {m n p : ℕ} (nnz : n ≠ 0) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
+theorem solutions_01_Irrational_Roots_3 {m n p : ℕ} (nnz : n ≠ 0) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
 begin
   intro sqr_eq,
   have nsqr_nez : n^2 ≠ 0,
@@ -88,7 +88,7 @@ begin
   norm_num at this
 end
 
-example {m n k r : ℕ} (nnz : n ≠ 0) (pow_eq : m^k = r * n^k)
+theorem solutions_01_Irrational_Roots_4 {m n k r : ℕ} (nnz : n ≠ 0) (pow_eq : m^k = r * n^k)
   {p : ℕ} (prime_p : p.prime) : k ∣ r.factorization p :=
 begin
   cases r with r,

@@ -18,15 +18,15 @@ section
 variables {E : Type*} [normed_add_comm_group E] [normed_space ℝ E] [complete_space E]
   {f : α → E}
 
-example {f g : α → E} (hf : integrable f μ) (hg : integrable g μ) :
+theorem 03_Integration_1 {f g : α → E} (hf : integrable f μ) (hg : integrable g μ) :
   ∫ a, f a + g a ∂μ = ∫ a, f a ∂μ + ∫ a, g a ∂μ :=
 integral_add hf hg
 
-example {s : set α} (c : E) :
+theorem 03_Integration_2 {s : set α} (c : E) :
   ∫ x in s, c ∂μ = (μ s).to_real • c :=
 set_integral_const c
 
-example {F : ℕ → α → E} {f : α → E} (bound : α → ℝ)
+theorem 03_Integration_3 {F : ℕ → α → E} {f : α → E} (bound : α → ℝ)
   (hmeas : ∀ n, ae_strongly_measurable (F n) μ)
   (hint : integrable bound μ)
   (hbound : ∀ n, ∀ᵐ a ∂μ, ‖F n a‖ ≤ bound a)
@@ -52,12 +52,12 @@ variables {𝕜 : Type*} {G : Type*} {E : Type*} {E' : Type*} {F : Type*}
   [normed_space 𝕜 E] [normed_space 𝕜 E'] [normed_space 𝕜 F]
   [measurable_space G] [normed_space ℝ F] [complete_space F] [has_sub G]
 
-example (f : G → E) (g : G → E') (L : E →L[𝕜] E' →L[𝕜] F) (μ : measure G) :
+theorem 03_Integration_4 (f : G → E) (g : G → E') (L : E →L[𝕜] E' →L[𝕜] F) (μ : measure G) :
   f ⋆[L, μ] g = λ x, ∫ t, L (f t) (g (x - t)) ∂μ :=
 rfl
 
 end
-example {E : Type*}
+theorem 03_Integration_5 {E : Type*}
   [normed_add_comm_group E] [normed_space ℝ E] [finite_dimensional ℝ E]
   [measurable_space E] [borel_space E] (μ : measure E) [μ.is_add_haar_measure]
   {F : Type*} [normed_add_comm_group F] [normed_space ℝ F] [complete_space F]

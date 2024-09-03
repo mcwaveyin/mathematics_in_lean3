@@ -9,14 +9,14 @@ variables (s t u : set α)
 
 open set
 
-example : (s ∩ t) ∪ (s ∩ u) ⊆ s ∩ (t ∪ u):=
+theorem solutions_01_Sets_1 : (s ∩ t) ∪ (s ∩ u) ⊆ s ∩ (t ∪ u):=
 begin
   rintros x (⟨xs, xt⟩ | ⟨xs, xu⟩),
   { use xs, left, exact xt },
   use xs, right, exact xu
 end
 
-example : s \ (t ∪ u) ⊆ s \ t \ u :=
+theorem solutions_01_Sets_2 : s \ (t ∪ u) ⊆ s \ t \ u :=
 begin
   rintros x ⟨xs, xntu⟩,
   use xs,
@@ -25,10 +25,10 @@ begin
   apply xntu (or.inr xu)
 end
 
-example : s ∩ t = t ∩ s :=
+theorem solutions_01_Sets_3 : s ∩ t = t ∩ s :=
 subset.antisymm (λ x ⟨xs, xt⟩, ⟨xt, xs⟩) (λ x ⟨xt, xs⟩, ⟨xs, xt⟩)
 
-example : s ∩ (s ∪ t) = s :=
+theorem solutions_01_Sets_4 : s ∩ (s ∪ t) = s :=
 begin
   ext x, split,
   { rintros ⟨xs, _⟩, exact xs },
@@ -36,14 +36,14 @@ begin
   use xs, left, exact xs
 end
 
-example : s ∪ (s ∩ t) = s :=
+theorem solutions_01_Sets_5 : s ∪ (s ∩ t) = s :=
 begin
   ext x, split,
   { rintros (xs | ⟨xs, xt⟩); exact xs },
   intro xs, left, exact xs
 end
 
-example : (s \ t) ∪ t = s ∪ t :=
+theorem solutions_01_Sets_6 : (s \ t) ∪ t = s ∪ t :=
 begin
   ext x, split,
   { rintros (⟨xs, nxt⟩ | xt),
@@ -56,7 +56,7 @@ begin
   right, use xt
 end
 
-example : (s \ t) ∪ (t \ s) = (s ∪ t) \ (s ∩ t) :=
+theorem solutions_01_Sets_7 : (s \ t) ∪ (t \ s) = (s ∪ t) \ (s ∩ t) :=
 begin
   ext x, split,
   { rintros (⟨xs, xnt⟩ | ⟨xt, xns⟩),
@@ -73,7 +73,7 @@ begin
   split; assumption
 end
 
-example : { n | nat.prime n } ∩ { n | n > 2} ⊆ { n | ¬ even n } :=
+theorem solutions_01_Sets_8 : { n | nat.prime n } ∩ { n | n > 2} ⊆ { n | ¬ even n } :=
 begin
   intro n,
   simp,
@@ -93,7 +93,7 @@ variable (ssubt : s ⊆ t)
 
 include ssubt
 
-example (h₀ : ∀ x ∈ t, ¬ even x) (h₁ : ∀ x ∈ t, prime x) :
+theorem solutions_01_Sets_9 (h₀ : ∀ x ∈ t, ¬ even x) (h₁ : ∀ x ∈ t, prime x) :
   ∀ x ∈ s, ¬ even x ∧ prime x :=
 begin
   intros x xs,
@@ -102,7 +102,7 @@ begin
   apply h₁ x (ssubt xs)
 end
 
-example (h : ∃ x ∈ s, ¬ even x ∧ prime x) :
+theorem solutions_01_Sets_10 (h : ∃ x ∈ s, ¬ even x ∧ prime x) :
   ∃ x ∈ t, prime x :=
 begin
   rcases h with ⟨x, xs, _, px⟩,
@@ -119,7 +119,7 @@ variables A B : I → set α
 variable  s : set α
 open set
 
-example : s ∪ (⋂ i, A i) = ⋂ i, (A i ∪ s) :=
+theorem solutions_01_Sets_11 : s ∪ (⋂ i, A i) = ⋂ i, (A i ∪ s) :=
 begin
   ext x,
   simp only [mem_union, mem_Inter],
@@ -139,7 +139,7 @@ end
 
 def primes : set ℕ := {x | nat.prime x}
 
-example : (⋃ p ∈ primes, {x | x ≤ p}) = univ :=
+theorem solutions_01_Sets_12 : (⋃ p ∈ primes, {x | x ≤ p}) = univ :=
 begin
   apply eq_univ_of_forall,
   intro x,

@@ -16,7 +16,7 @@ variables
 
 open metric
 
-example {ι : Type*} [complete_space E] {g : ι → E →L[𝕜] F}
+theorem solutions_02_Differential_Calculus_in_Normed_Spaces_1 {ι : Type*} [complete_space E] {g : ι → E →L[𝕜] F}
   (h : ∀ x, ∃ C, ∀ i, ‖g i x‖ ≤ C) :
   ∃ C', ∀ i, ‖g i‖ ≤ C' :=
 begin

@@ -7,7 +7,7 @@ variables a b c d : ℝ
 #check (min_le_right a b : min a b ≤ b)
 #check (le_min : c ≤ a → c ≤ b → c ≤ min a b)
 
-example : max a b = max b a :=
+theorem solutions_04_More_on_Order_and_Divisibility_1 : max a b = max b a :=
 begin
   apply le_antisymm,
   repeat {
@@ -16,7 +16,7 @@ begin
     apply le_max_left }
 end
 
-example : min (min a b) c = min a (min b c) :=
+theorem solutions_04_More_on_Order_and_Divisibility_2 : min (min a b) c = min a (min b c) :=
 begin
   apply le_antisymm,
   { apply le_min,
@@ -48,7 +48,7 @@ begin
   apply min_le_right
 end
 
-example : min a b + c = min (a + c) (b + c) :=
+theorem solutions_04_More_on_Order_and_Divisibility_3 : min a b + c = min (a + c) (b + c) :=
 begin
   apply le_antisymm,
   { apply aux },
@@ -62,7 +62,7 @@ begin
   rw [add_neg_cancel_right, add_neg_cancel_right]
 end
 
-example : abs a - abs b ≤ abs (a - b) :=
+theorem solutions_04_More_on_Order_and_Divisibility_4 : abs a - abs b ≤ abs (a - b) :=
 calc
   abs a - abs b = abs (a - b + b) - abs b :
     by rw sub_add_cancel
@@ -75,7 +75,7 @@ calc
     by rw add_sub_cancel
 
 -- alternatively
-example : abs a - abs b ≤ abs (a - b) :=
+theorem solutions_04_More_on_Order_and_Divisibility_5 : abs a - abs b ≤ abs (a - b) :=
 begin
   have h := abs_add (a - b) b,
   rw sub_add_cancel at h,
@@ -87,19 +87,19 @@ end
 section
 variables w x y z : ℕ
 
-example (h₀ : x ∣ y) (h₁ : y ∣ z) : x ∣ z :=
+theorem solutions_04_More_on_Order_and_Divisibility_6 (h₀ : x ∣ y) (h₁ : y ∣ z) : x ∣ z :=
 dvd_trans h₀ h₁
 
-example : x ∣ y * x * z :=
+theorem solutions_04_More_on_Order_and_Divisibility_7 : x ∣ y * x * z :=
 begin
   apply dvd_mul_of_dvd_left,
   apply dvd_mul_left
 end
 
-example : x ∣ x^2 :=
+theorem solutions_04_More_on_Order_and_Divisibility_8 : x ∣ x^2 :=
 by apply dvd_mul_right
 
-example (h : x ∣ w) : x ∣ y * (x * z) + x^2 + w^2 :=
+theorem solutions_04_More_on_Order_and_Divisibility_9 (h : x ∣ w) : x ∣ y * (x * z) + x^2 + w^2 :=
 begin
   apply dvd_add,
   { apply dvd_add,
@@ -122,7 +122,7 @@ open nat
 #check (lcm_zero_right n : lcm n 0 = 0)
 #check (lcm_zero_left n  : lcm 0 n = 0)
 
-example : gcd m n = gcd n m :=
+theorem solutions_04_More_on_Order_and_Divisibility_10 : gcd m n = gcd n m :=
 begin
   apply dvd_antisymm,
   repeat {

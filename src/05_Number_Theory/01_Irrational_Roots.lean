@@ -4,29 +4,29 @@ import data.real.irrational
 
 #print nat.coprime
 
-example (m n : nat) (h : m.coprime n) : m.gcd n = 1 := h
+theorem 01_Irrational_Roots_1 (m n : nat) (h : m.coprime n) : m.gcd n = 1 := h
 
-example (m n : nat) (h : m.coprime n) : m.gcd n = 1 :=
+theorem 01_Irrational_Roots_2 (m n : nat) (h : m.coprime n) : m.gcd n = 1 :=
 by { rw nat.coprime at h, exact h }
 
-example : nat.coprime 12 7 := by norm_num
-example : nat.gcd 12 8 = 4 := by norm_num
+theorem 01_Irrational_Roots_3 : nat.coprime 12 7 := by norm_num
+theorem 01_Irrational_Roots_4 : nat.gcd 12 8 = 4 := by norm_num
 
 #check @nat.prime_def_lt
 
-example (p : ℕ) (prime_p : nat.prime p) : 2 ≤ p ∧ ∀ (m : ℕ), m < p → m ∣ p → m = 1 :=
+theorem 01_Irrational_Roots_5 (p : ℕ) (prime_p : nat.prime p) : 2 ≤ p ∧ ∀ (m : ℕ), m < p → m ∣ p → m = 1 :=
 by rwa nat.prime_def_lt at prime_p
 
 #check nat.prime.eq_one_or_self_of_dvd
 
-example (p : ℕ) (prime_p : nat.prime p) : ∀ (m : ℕ), m ∣ p → m = 1 ∨ m = p :=
+theorem 01_Irrational_Roots_6 (p : ℕ) (prime_p : nat.prime p) : ∀ (m : ℕ), m ∣ p → m = 1 ∨ m = p :=
 prime_p.eq_one_or_self_of_dvd
 
-example : nat.prime 17 := by norm_num
+theorem 01_Irrational_Roots_7 : nat.prime 17 := by norm_num
 
 -- commonly used
-example : nat.prime 2 := nat.prime_two
-example : nat.prime 3 := nat.prime_three
+theorem 01_Irrational_Roots_8 : nat.prime 2 := nat.prime_two
+theorem 01_Irrational_Roots_9 : nat.prime 3 := nat.prime_three
 
 #check @nat.prime.dvd_mul
 #check nat.prime.dvd_mul nat.prime_two
@@ -38,17 +38,17 @@ begin
   cases h; assumption
 end
 
-example {m : ℕ} (h : 2 ∣ m^2) : 2 ∣ m :=
+theorem 01_Irrational_Roots_10 {m : ℕ} (h : 2 ∣ m^2) : 2 ∣ m :=
 nat.prime.dvd_of_dvd_pow nat.prime_two h
 
-example (a b c : nat) (h : a * b = a * c) (h' : a ≠ 0) :
+theorem 01_Irrational_Roots_11 (a b c : nat) (h : a * b = a * c) (h' : a ≠ 0) :
   b = c :=
 begin
   -- library_search suggests the following:
   exact (mul_right_inj' h').mp h
 end
 
-example {m n : ℕ} (coprime_mn : m.coprime n) : m^2 ≠ 2 * n^2 :=
+theorem 01_Irrational_Roots_12 {m n : ℕ} (coprime_mn : m.coprime n) : m^2 ≠ 2 * n^2 :=
 begin
   intro sqr_eq,
   have : 2 ∣ m,
@@ -67,7 +67,7 @@ begin
   norm_num at this
 end
 
-example {m n p : ℕ} (coprime_mn : m.coprime n) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
+theorem 01_Irrational_Roots_13 {m n p : ℕ} (coprime_mn : m.coprime n) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
     sorry
 
 #check nat.factors
@@ -89,7 +89,7 @@ theorem nat.prime.factorization' {p : ℕ} (prime_p : p.prime) :
 by { rw prime_p.factorization, simp }
 
 
-example {m n p : ℕ} (nnz : n ≠ 0) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
+theorem 01_Irrational_Roots_14 {m n p : ℕ} (nnz : n ≠ 0) (prime_p : p.prime) : m^2 ≠ p * n^2 :=
 begin
   intro sqr_eq,
   have nsqr_nez : n^2 ≠ 0,
@@ -104,7 +104,7 @@ begin
   norm_num at this
 end
 
-example {m n k r : ℕ} (nnz : n ≠ 0) (pow_eq : m^k = r * n^k)
+theorem 01_Irrational_Roots_15 {m n k r : ℕ} (nnz : n ≠ 0) (pow_eq : m^k = r * n^k)
   {p : ℕ} (prime_p : p.prime) : k ∣ r.factorization p :=
 begin
   cases r with r,

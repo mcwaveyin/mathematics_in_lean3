@@ -32,17 +32,17 @@ theorem hard : fermat_last_theorem := sorry
 
 /- Here are some proofs. -/
 
-example : ∀ m n : nat, even n → even (m * n) :=
+theorem 02_Overview_1 : ∀ m n : nat, even n → even (m * n) :=
 assume m n ⟨k, (hk : n = k + k)⟩,
 have hmn : m * n = m * k + m * k,
   by rw [hk, mul_add],
 show ∃ l, m * n = l + l,
   from ⟨_, hmn⟩
 
-example : ∀ m n : nat, even n → even (m * n) :=
+theorem 02_Overview_2 : ∀ m n : nat, even n → even (m * n) :=
 λ m n ⟨k, hk⟩, ⟨m * k, by rw [hk, mul_add]⟩
 
-example : ∀ m n : nat, even n → even (m * n) :=
+theorem 02_Overview_3 : ∀ m n : nat, even n → even (m * n) :=
 begin
   -- say m and n are natural numbers, and assume n=2*k
   rintros m n ⟨k, hk⟩,
@@ -54,9 +54,9 @@ begin
   ring
 end
 
-example : ∀ m n : nat, even n → even (m * n) :=
+theorem 02_Overview_4 : ∀ m n : nat, even n → even (m * n) :=
 by { rintros m n ⟨k, hk⟩, use m * k, rw hk, ring }
 
-example : ∀ m n : nat, even n → even (m * n) :=
+theorem 02_Overview_5 : ∀ m n : nat, even n → even (m * n) :=
 by intros; simp * with parity_simps
 

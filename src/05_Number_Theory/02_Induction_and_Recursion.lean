@@ -2,21 +2,21 @@ import data.nat.gcd.basic
 import algebra.big_operators.basic
 import tactic
 
-example (n : nat) : n.succ ≠ nat.zero := nat.succ_ne_zero n
+theorem 02_Induction_and_Recursion_1 (n : nat) : n.succ ≠ nat.zero := nat.succ_ne_zero n
 
-example (m n : nat) (h : m.succ = n.succ) : m = n := nat.succ.inj h
+theorem 02_Induction_and_Recursion_2 (m n : nat) (h : m.succ = n.succ) : m = n := nat.succ.inj h
 
 def fac : ℕ → ℕ
 | 0       := 1
 | (n + 1) := (n + 1) * fac n
 
-example : fac 0 = 1 := rfl
-example : fac 0 = 1 := by rw fac
-example : fac 0 = 1 := by simp [fac]
+theorem 02_Induction_and_Recursion_3 : fac 0 = 1 := rfl
+theorem 02_Induction_and_Recursion_4 : fac 0 = 1 := by rw fac
+theorem 02_Induction_and_Recursion_5 : fac 0 = 1 := by simp [fac]
 
-example (n : ℕ) : fac (n + 1) = (n + 1) * fac n := rfl
-example (n : ℕ) : fac (n + 1) = (n + 1) * fac n := by rw fac
-example (n : ℕ) : fac (n + 1) = (n + 1) * fac n := by simp [fac]
+theorem 02_Induction_and_Recursion_6 (n : ℕ) : fac (n + 1) = (n + 1) * fac n := rfl
+theorem 02_Induction_and_Recursion_7 (n : ℕ) : fac (n + 1) = (n + 1) * fac n := by rw fac
+theorem 02_Induction_and_Recursion_8 (n : ℕ) : fac (n + 1) = (n + 1) * fac n := by simp [fac]
 
 theorem fac_pos (n : ℕ) : 0 < fac n :=
 begin
@@ -54,33 +54,33 @@ variables {α : Type*} (s : finset ℕ) (f : ℕ → ℕ) (n : ℕ)
 open_locale big_operators
 open finset
 
-example : s.sum f = ∑ x in s, f x := rfl
-example : s.prod f = ∏ x in s, f x := rfl
+theorem 02_Induction_and_Recursion_9 : s.sum f = ∑ x in s, f x := rfl
+theorem 02_Induction_and_Recursion_10 : s.prod f = ∏ x in s, f x := rfl
 
-example : (range n).sum f = ∑ x in range n, f x := rfl
-example : (range n).prod f = ∏ x in range n, f x := rfl
+theorem 02_Induction_and_Recursion_11 : (range n).sum f = ∑ x in range n, f x := rfl
+theorem 02_Induction_and_Recursion_12 : (range n).prod f = ∏ x in range n, f x := rfl
 
-example (f : ℕ → ℕ) : ∑ x in range 0, f x = 0 :=
+theorem 02_Induction_and_Recursion_13 (f : ℕ → ℕ) : ∑ x in range 0, f x = 0 :=
 finset.sum_range_zero f
 
-example (f : ℕ → ℕ) (n : ℕ): ∑ x in range n.succ, f x = (∑ x in range n, f x) + f n :=
+theorem 02_Induction_and_Recursion_14 (f : ℕ → ℕ) (n : ℕ): ∑ x in range n.succ, f x = (∑ x in range n, f x) + f n :=
 finset.sum_range_succ f n
 
-example (f : ℕ → ℕ) : ∏ x in range 0, f x = 1 :=
+theorem 02_Induction_and_Recursion_15 (f : ℕ → ℕ) : ∏ x in range 0, f x = 1 :=
 finset.prod_range_zero f
 
-example (f : ℕ → ℕ) (n : ℕ): ∏ x in range n.succ, f x = (∏ x in range n, f x) * f n :=
+theorem 02_Induction_and_Recursion_16 (f : ℕ → ℕ) (n : ℕ): ∏ x in range n.succ, f x = (∏ x in range n, f x) * f n :=
 finset.prod_range_succ f n
 
 
-example (n : ℕ) : fac n = ∏ i in range n, (i + 1) :=
+theorem 02_Induction_and_Recursion_17 (n : ℕ) : fac n = ∏ i in range n, (i + 1) :=
 begin
   induction n with n ih,
   { simp [fac] },
   simp [fac, ih, prod_range_succ, mul_comm]
 end
 
-example (a b c d e f : ℕ) : a * ((b * c) * f * (d * e)) = d * (a * f * e) * (c * b) :=
+theorem 02_Induction_and_Recursion_18 (a b c d e f : ℕ) : a * ((b * c) * f * (d * e)) = d * (a * f * e) * (c * b) :=
 by simp [mul_assoc, mul_comm, mul_left_comm]
 
 theorem sum_id (n : ℕ) : ∑ i in range (n + 1), i = n * (n + 1) / 2 :=

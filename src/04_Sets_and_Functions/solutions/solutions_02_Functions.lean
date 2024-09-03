@@ -11,7 +11,7 @@ variables u v : set β
 open function
 open set
 
-example : f '' s ⊆ v ↔ s ⊆ f ⁻¹' v :=
+theorem solutions_02_Functions_1 : f '' s ⊆ v ↔ s ⊆ f ⁻¹' v :=
 begin
   split,
   { intros h x xs,
@@ -24,20 +24,20 @@ begin
   apply h xs
 end
 
-example (h : injective f) : f ⁻¹' (f '' s) ⊆ s :=
+theorem solutions_02_Functions_2 (h : injective f) : f ⁻¹' (f '' s) ⊆ s :=
 begin
   rintros x ⟨y, ys, fxeq⟩,
   rw ← h fxeq,
   exact ys
 end
 
-example : f '' (f⁻¹' u) ⊆ u :=
+theorem solutions_02_Functions_3 : f '' (f⁻¹' u) ⊆ u :=
 begin
   rintros y ⟨x, xmem, rfl⟩,
   exact xmem
 end
 
-example (h : surjective f) : u ⊆ f '' (f⁻¹' u) :=
+theorem solutions_02_Functions_4 (h : surjective f) : u ⊆ f '' (f⁻¹' u) :=
 begin
   intros y yu,
   rcases h y with ⟨x, fxeq⟩,
@@ -48,25 +48,25 @@ begin
   exact fxeq
 end
 
-example (h : s ⊆ t) : f '' s ⊆ f '' t :=
+theorem solutions_02_Functions_5 (h : s ⊆ t) : f '' s ⊆ f '' t :=
 begin
   rintros y ⟨x, xs, fxeq⟩,
   use [x, h xs, fxeq]
 end
 
-example (h : u ⊆ v) : f ⁻¹' u ⊆ f ⁻¹' v :=
+theorem solutions_02_Functions_6 (h : u ⊆ v) : f ⁻¹' u ⊆ f ⁻¹' v :=
 by intro x; apply h
 
-example : f ⁻¹' (u ∪ v) = f ⁻¹' u ∪ f ⁻¹' v :=
+theorem solutions_02_Functions_7 : f ⁻¹' (u ∪ v) = f ⁻¹' u ∪ f ⁻¹' v :=
 by ext x; refl
 
-example : f '' (s ∩ t) ⊆ f '' s ∩ f '' t :=
+theorem solutions_02_Functions_8 : f '' (s ∩ t) ⊆ f '' s ∩ f '' t :=
 begin
   rintros y ⟨x, ⟨xs, xt⟩, rfl⟩,
   use [x, xs, rfl, x, xt, rfl]
 end
 
-example (h : injective f) : f '' s ∩ f '' t ⊆ f '' (s ∩ t) :=
+theorem solutions_02_Functions_9 (h : injective f) : f '' s ∩ f '' t ⊆ f '' (s ∩ t) :=
 begin
   rintros y ⟨⟨x₁, x₁s, rfl⟩, ⟨x₂, x₂t, fx₂eq⟩⟩,
   use [x₁, x₁s],
@@ -74,7 +74,7 @@ begin
   exact x₂t
 end
 
-example : f '' s \ f '' t ⊆ f '' (s \ t) :=
+theorem solutions_02_Functions_10 : f '' s \ f '' t ⊆ f '' (s \ t) :=
 begin
   rintros y ⟨⟨x₁, x₁s, rfl⟩, h⟩,
   use [x₁, x₁s],
@@ -83,10 +83,10 @@ begin
   use [x₁, h', rfl]
 end
 
-example : f ⁻¹' u \ f ⁻¹' v ⊆ f ⁻¹' (u \ v) :=
+theorem solutions_02_Functions_11 : f ⁻¹' u \ f ⁻¹' v ⊆ f ⁻¹' (u \ v) :=
 λ x, id
 
-example : f '' s ∩ v = f '' (s ∩ f ⁻¹' v) :=
+theorem solutions_02_Functions_12 : f '' s ∩ v = f '' (s ∩ f ⁻¹' v) :=
 begin
   ext y, split,
   { rintros ⟨⟨x, xs, rfl⟩, fxv⟩,
@@ -95,19 +95,19 @@ begin
   use [x, xs, rfl, fxv],
 end
 
-example : f '' (s ∩ f ⁻¹' u) ⊆ f '' s ∩ u :=
+theorem solutions_02_Functions_13 : f '' (s ∩ f ⁻¹' u) ⊆ f '' s ∩ u :=
 begin
   rintros y ⟨x, ⟨xs, fxu⟩, rfl⟩,
   use [x, xs, rfl, fxu],
 end
 
-example : s ∩ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∩ u) :=
+theorem solutions_02_Functions_14 : s ∩ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∩ u) :=
 begin
   rintros x ⟨xs, fxu⟩,
   use [x, xs, rfl, fxu],
 end
 
-example : s ∪ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∪ u) :=
+theorem solutions_02_Functions_15 : s ∪ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∪ u) :=
 begin
   rintros x (xs | fxu),
   { left, use [x, xs, rfl] },
@@ -116,7 +116,7 @@ end
 
 variables {I : Type*} (A : I → set α) (B : I → set β)
 
-example : f '' (⋃ i, A i) = ⋃ i, f '' A i :=
+theorem solutions_02_Functions_16 : f '' (⋃ i, A i) = ⋃ i, f '' A i :=
 begin
   ext y, simp,
   split,
@@ -126,14 +126,14 @@ begin
   exact ⟨x, ⟨i, xAi⟩, fxeq⟩
 end
 
-example : f '' (⋂ i, A i) ⊆ ⋂ i, f '' A i :=
+theorem solutions_02_Functions_17 : f '' (⋂ i, A i) ⊆ ⋂ i, f '' A i :=
 begin
   intro y, simp,
   intros x h fxeq i,
   use [x, h i, fxeq],
 end
 
-example (i : I) (injf : injective f) : (⋂ i, f '' A i) ⊆ f '' (⋂ i, A i) :=
+theorem solutions_02_Functions_18 (i : I) (injf : injective f) : (⋂ i, f '' A i) ⊆ f '' (⋂ i, A i) :=
 begin
   intro y, simp,
   intro h,
@@ -148,10 +148,10 @@ begin
   exact fxeq
 end
 
-example : f ⁻¹' (⋃ i, B i) = ⋃ i, f ⁻¹' (B i) :=
+theorem solutions_02_Functions_19 : f ⁻¹' (⋃ i, B i) = ⋃ i, f ⁻¹' (B i) :=
 by { ext x, simp }
 
-example : f ⁻¹' (⋂ i, B i) = ⋂ i, f ⁻¹' (B i) :=
+theorem solutions_02_Functions_20 : f ⁻¹' (⋂ i, B i) = ⋂ i, f ⁻¹' (B i) :=
 by { ext x, simp }
 
 end
@@ -159,7 +159,7 @@ end
 section
 open set real
 
-example : inj_on sqrt { x | x ≥ 0 } :=
+theorem solutions_02_Functions_21 : inj_on sqrt { x | x ≥ 0 } :=
 begin
   intros x xnonneg y ynonneg,
   intro e,
@@ -169,7 +169,7 @@ begin
     ... = y          : by rw sq_sqrt ynonneg
 end
 
-example : inj_on (λ x, x^2) { x : ℝ | x ≥ 0 } :=
+theorem solutions_02_Functions_22 : inj_on (λ x, x^2) { x : ℝ | x ≥ 0 } :=
 begin
     intros x xnonneg y ynonneg,
     intro e,
@@ -180,7 +180,7 @@ begin
       ... = y          : by rw sqrt_sq ynonneg,
 end
 
-example : sqrt '' { x | x ≥ 0 } = {y | y ≥ 0} :=
+theorem solutions_02_Functions_23 : sqrt '' { x | x ≥ 0 } = {y | y ≥ 0} :=
 begin
     ext y, split,
     { rintros ⟨x, ⟨xnonneg, rfl⟩⟩,
@@ -194,7 +194,7 @@ begin
     assumption,
 end
 
-example : range (λ x, x^2) = {y : ℝ | y ≥ 0} :=
+theorem solutions_02_Functions_24 : range (λ x, x^2) = {y : ℝ | y ≥ 0} :=
 begin
     ext y,
     split,
@@ -227,7 +227,7 @@ end
 variable  f : α → β
 open function
 
-example : injective f ↔ left_inverse (inverse f) f  :=
+theorem solutions_02_Functions_25 : injective f ↔ left_inverse (inverse f) f  :=
 begin
   split,
   { intros h y,
@@ -238,10 +238,10 @@ begin
   rw [←h x1, ←h x2, e]
 end
 
-example : injective f ↔ left_inverse (inverse f) f  :=
+theorem solutions_02_Functions_26 : injective f ↔ left_inverse (inverse f) f  :=
 ⟨λ h y, h (inverse_spec _ ⟨y, rfl⟩), λ h x1 x2 e, by rw [←h x1, ←h x2, e]⟩
 
-example : surjective f ↔ right_inverse (inverse f) f :=
+theorem solutions_02_Functions_27 : surjective f ↔ right_inverse (inverse f) f :=
 begin
   split,
   { intros h y,
@@ -252,7 +252,7 @@ begin
   apply h
 end
 
-example : surjective f ↔ right_inverse (inverse f) f :=
+theorem solutions_02_Functions_28 : surjective f ↔ right_inverse (inverse f) f :=
 ⟨λ h y, inverse_spec _ (h _), λ h y, ⟨inverse f y, h _⟩⟩
 
 end

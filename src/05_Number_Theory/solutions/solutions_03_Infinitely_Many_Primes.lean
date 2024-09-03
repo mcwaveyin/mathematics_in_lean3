@@ -59,24 +59,24 @@ open finset
 section
 variables {α : Type*} [decidable_eq α] (r s t : finset α)
 
-example : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
+theorem solutions_03_Infinitely_Many_Primes_1 : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
 begin
   ext x,
   rw [mem_inter, mem_union, mem_union, mem_union, mem_inter],
   tauto
 end
 
-example : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
+theorem solutions_03_Infinitely_Many_Primes_2 : (r ∪ s) ∩ (r ∪ t) = r ∪ (s ∩ t) :=
 by { ext x, simp, tauto }
 
-example : (r \ s \ t) = r \ (s ∪ t) :=
+theorem solutions_03_Infinitely_Many_Primes_3 : (r \ s \ t) = r \ (s ∪ t) :=
 begin
   ext x,
   rw [mem_sdiff, mem_sdiff, mem_sdiff, mem_union],
   tauto
 end
 
-example : (r \ s \ t) = r \ (s ∪ t) :=
+theorem solutions_03_Infinitely_Many_Primes_4 : (r \ s \ t) = r \ (s ∪ t) :=
 by { ext x, simp, tauto }
 
 end

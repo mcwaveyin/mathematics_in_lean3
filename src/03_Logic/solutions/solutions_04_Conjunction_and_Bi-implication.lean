@@ -1,7 +1,7 @@
 import data.real.basic
 import data.nat.prime_norm_num
 
-example {m n : ℕ} (h : m ∣ n ∧ m ≠ n) :
+theorem solutions_04_Conjunction_and_Bi-implication_1 {m n : ℕ} (h : m ∣ n ∧ m ≠ n) :
   m ∣ n ∧ ¬ n ∣ m :=
 begin
   cases h with h0 h1,
@@ -12,7 +12,7 @@ begin
   apply nat.dvd_antisymm h0 h2,
 end
 
-example {x y : ℝ} : x ≤ y ∧ ¬ y ≤ x ↔ x ≤ y ∧ x ≠ y :=
+theorem solutions_04_Conjunction_and_Bi-implication_2 {x y : ℝ} : x ≤ y ∧ ¬ y ≤ x ↔ x ≤ y ∧ x ≠ y :=
 begin
   split,
   { rintros ⟨h0, h1⟩,
@@ -36,7 +36,7 @@ begin
   exact pow_eq_zero h'
 end
 
-example (x y : ℝ) : x^2 + y^2 = 0 ↔ x = 0 ∧ y = 0 :=
+theorem solutions_04_Conjunction_and_Bi-implication_3 (x y : ℝ) : x^2 + y^2 = 0 ↔ x = 0 ∧ y = 0 :=
 begin
   split,
   { intro h,
@@ -52,7 +52,7 @@ theorem not_monotone_iff {f : ℝ → ℝ}:
   ¬ monotone f ↔ ∃ x y, x ≤ y ∧ f x > f y :=
 by { rw monotone, push_neg }
 
-example : ¬ monotone (λ x : ℝ, -x) :=
+theorem solutions_04_Conjunction_and_Bi-implication_4 : ¬ monotone (λ x : ℝ, -x) :=
 begin
   rw not_monotone_iff,
   use [0, 1],
@@ -63,7 +63,7 @@ section
 variables {α : Type*} [partial_order α]
 variables a b : α
 
-example : a < b ↔ a ≤ b ∧ a ≠ b :=
+theorem solutions_04_Conjunction_and_Bi-implication_5 : a < b ↔ a ≤ b ∧ a ≠ b :=
 begin
   rw lt_iff_le_not_le,
   split,
@@ -87,14 +87,14 @@ section
 variables {α : Type*} [preorder α]
 variables a b c : α
 
-example : ¬ a < a :=
+theorem solutions_04_Conjunction_and_Bi-implication_6 : ¬ a < a :=
 begin
   rw lt_iff_le_not_le,
   rintros ⟨h0, h1⟩,
   exact h1 h0
 end
 
-example : a < b → b < c → a < c :=
+theorem solutions_04_Conjunction_and_Bi-implication_7 : a < b → b < c → a < c :=
 begin
   simp only [lt_iff_le_not_le],
   rintros ⟨h0, h1⟩ ⟨h2, h3⟩,

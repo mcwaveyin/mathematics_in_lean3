@@ -14,7 +14,7 @@ variables x y z : α
 #check (lt_of_le_of_lt : x ≤ y → y < z → x < z)
 #check (lt_of_lt_of_le : x < y → y ≤ z → x < z)
 
-example : x < y ↔ x ≤ y ∧ x ≠ y :=
+theorem 05_Proving_Facts_about_Algebraic_Structures_1 : x < y ↔ x ≤ y ∧ x ≠ y :=
 lt_iff_le_and_ne
 
 end
@@ -33,10 +33,10 @@ variables x y z : α
 #check (le_sup_right: y ≤ x ⊔ y)
 #check (sup_le : x ≤ z → y ≤ z → x ⊔ y ≤ z)
 
-example : x ⊓ y = y ⊓ x := sorry
-example : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) := sorry
-example : x ⊔ y = y ⊔ x := sorry
-example : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_2 : x ⊓ y = y ⊓ x := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_3 : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_4 : x ⊔ y = y ⊔ x := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_5 : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) := sorry
 
 theorem absorb1 : x ⊓ (x ⊔ y) = x := sorry
 theorem absorb2 : x ⊔ (x ⊓ y) = x := sorry
@@ -58,11 +58,11 @@ section
 variables {α : Type*} [lattice α]
 variables a b c : α
 
-example (h : ∀ x y z : α, x ⊓ (y ⊔ z) = (x ⊓ y) ⊔ (x ⊓ z)) :
+theorem 05_Proving_Facts_about_Algebraic_Structures_6 (h : ∀ x y z : α, x ⊓ (y ⊔ z) = (x ⊓ y) ⊔ (x ⊓ z)) :
   a ⊔ (b ⊓ c) = (a ⊔ b) ⊓ (a ⊔ c) :=
 sorry
 
-example (h : ∀ x y z : α, x ⊔ (y ⊓ z) = (x ⊔ y) ⊓ (x ⊔ z)) :
+theorem 05_Proving_Facts_about_Algebraic_Structures_7 (h : ∀ x y z : α, x ⊔ (y ⊓ z) = (x ⊔ y) ⊓ (x ⊔ z)) :
   a ⊓ (b ⊔ c) = (a ⊓ b) ⊔ (a ⊓ c) :=
 sorry
 
@@ -77,11 +77,11 @@ variables a b c : R
 
 #check (mul_nonneg : 0 ≤ a → 0 ≤ b → 0 ≤ a * b)
 
-example : a ≤ b → 0 ≤ b - a := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_8 : a ≤ b → 0 ≤ b - a := sorry
 
-example : 0 ≤ b - a → a ≤ b := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_9 : 0 ≤ b - a → a ≤ b := sorry
 
-example (h : a ≤ b) (h' : 0 ≤ c) : a * c ≤ b * c := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_10 (h : a ≤ b) (h' : 0 ≤ c) : a * c ≤ b * c := sorry
 
 end
 
@@ -93,7 +93,7 @@ variables x y z : X
 #check (dist_comm x y : dist x y = dist y x)
 #check (dist_triangle x y z : dist x z ≤ dist x y + dist y z)
 
-example (x y : X) : 0 ≤ dist x y := sorry
+theorem 05_Proving_Facts_about_Algebraic_Structures_11 (x y : X) : 0 ≤ dist x y := sorry
 
 end
 

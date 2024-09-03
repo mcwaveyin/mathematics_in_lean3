@@ -3,13 +3,13 @@ import data.real.basic
 def converges_to (s : ℕ → ℝ) (a : ℝ) :=
 ∀ ε > 0, ∃ N, ∀ n ≥ N, abs (s n - a) < ε
 
-example : (λ x y : ℝ, (x + y)^2) = (λ x y : ℝ, x^2 + 2*x*y + y^2) :=
+theorem 06_Sequences_and_Convergence_1 : (λ x y : ℝ, (x + y)^2) = (λ x y : ℝ, x^2 + 2*x*y + y^2) :=
 by { ext, ring }
 
-example (a b : ℝ) : abs a = abs (a - b + b) :=
+theorem 06_Sequences_and_Convergence_2 (a b : ℝ) : abs a = abs (a - b + b) :=
 by  { congr, ring }
 
-example {a : ℝ} (h : 1 < a) : a < a * a :=
+theorem 06_Sequences_and_Convergence_3 {a : ℝ} (h : 1 < a) : a < a * a :=
 begin
   convert (mul_lt_mul_right _).2 h,
   { rw [one_mul] },

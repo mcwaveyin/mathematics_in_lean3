@@ -11,10 +11,10 @@ variables u v : set β
 open function
 open set
 
-example : f ⁻¹' (u ∩ v) = f ⁻¹' u ∩ f ⁻¹' v :=
+theorem 02_Functions_1 : f ⁻¹' (u ∩ v) = f ⁻¹' u ∩ f ⁻¹' v :=
 by { ext, refl }
 
-example : f '' (s ∪ t) = f '' s ∪ f '' t :=
+theorem 02_Functions_2 : f '' (s ∪ t) = f '' s ∪ f '' t :=
 begin
   ext y, split,
   { rintros ⟨x, xs | xt, rfl⟩,
@@ -25,61 +25,61 @@ begin
   use [x, or.inr xt]
 end
 
-example : s ⊆ f ⁻¹' (f '' s) :=
+theorem 02_Functions_3 : s ⊆ f ⁻¹' (f '' s) :=
 begin
   intros x xs,
   show f x ∈ f '' s,
   use [x, xs]
 end
 
-example : f '' s ⊆ v ↔ s ⊆ f ⁻¹' v :=
+theorem 02_Functions_4 : f '' s ⊆ v ↔ s ⊆ f ⁻¹' v :=
 sorry
 
-example (h : injective f) : f ⁻¹' (f '' s) ⊆ s :=
+theorem 02_Functions_5 (h : injective f) : f ⁻¹' (f '' s) ⊆ s :=
 sorry
 
-example : f '' (f⁻¹' u) ⊆ u :=
+theorem 02_Functions_6 : f '' (f⁻¹' u) ⊆ u :=
 sorry
 
-example (h : surjective f) : u ⊆ f '' (f⁻¹' u) :=
+theorem 02_Functions_7 (h : surjective f) : u ⊆ f '' (f⁻¹' u) :=
 sorry
 
-example (h : s ⊆ t) : f '' s ⊆ f '' t :=
+theorem 02_Functions_8 (h : s ⊆ t) : f '' s ⊆ f '' t :=
 sorry
 
-example (h : u ⊆ v) : f ⁻¹' u ⊆ f ⁻¹' v :=
+theorem 02_Functions_9 (h : u ⊆ v) : f ⁻¹' u ⊆ f ⁻¹' v :=
 sorry
 
-example : f ⁻¹' (u ∪ v) = f ⁻¹' u ∪ f ⁻¹' v :=
+theorem 02_Functions_10 : f ⁻¹' (u ∪ v) = f ⁻¹' u ∪ f ⁻¹' v :=
 sorry
 
-example : f '' (s ∩ t) ⊆ f '' s ∩ f '' t :=
+theorem 02_Functions_11 : f '' (s ∩ t) ⊆ f '' s ∩ f '' t :=
 sorry
 
-example (h : injective f) : f '' s ∩ f '' t ⊆ f '' (s ∩ t) :=
+theorem 02_Functions_12 (h : injective f) : f '' s ∩ f '' t ⊆ f '' (s ∩ t) :=
 sorry
 
-example : f '' s \ f '' t ⊆ f '' (s \ t) :=
+theorem 02_Functions_13 : f '' s \ f '' t ⊆ f '' (s \ t) :=
 sorry
 
-example : f ⁻¹' u \ f ⁻¹' v ⊆ f ⁻¹' (u \ v) :=
+theorem 02_Functions_14 : f ⁻¹' u \ f ⁻¹' v ⊆ f ⁻¹' (u \ v) :=
 sorry
 
-example : f '' s ∩ v = f '' (s ∩ f ⁻¹' v) :=
+theorem 02_Functions_15 : f '' s ∩ v = f '' (s ∩ f ⁻¹' v) :=
 sorry
 
-example : f '' (s ∩ f ⁻¹' u) ⊆ f '' s ∪ u :=
+theorem 02_Functions_16 : f '' (s ∩ f ⁻¹' u) ⊆ f '' s ∪ u :=
 sorry
 
-example : s ∩ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∩ u) :=
+theorem 02_Functions_17 : s ∩ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∩ u) :=
 sorry
 
-example : s ∪ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∪ u) :=
+theorem 02_Functions_18 : s ∪ f ⁻¹' u ⊆ f ⁻¹' (f '' s ∪ u) :=
 sorry
 
 variables {I : Type*} (A : I → set α) (B : I → set β)
 
-example : f '' (⋃ i, A i) = ⋃ i, f '' A i :=
+theorem 02_Functions_19 : f '' (⋃ i, A i) = ⋃ i, f '' A i :=
 begin
   ext y, simp,
   split,
@@ -89,14 +89,14 @@ begin
   exact ⟨x, ⟨i, xAi⟩, fxeq⟩
 end
 
-example : f '' (⋂ i, A i) ⊆ ⋂ i, f '' A i :=
+theorem 02_Functions_20 : f '' (⋂ i, A i) ⊆ ⋂ i, f '' A i :=
 begin
   intro y, simp,
   intros x h fxeq i,
   use [x, h i, fxeq],
 end
 
-example (i : I) (injf : injective f) :
+theorem 02_Functions_21 (i : I) (injf : injective f) :
   (⋂ i, f '' A i) ⊆ f '' (⋂ i, A i) :=
 begin
   intro y, simp,
@@ -112,13 +112,13 @@ begin
   exact fxeq
 end
 
-example : f ⁻¹' (⋃ i, B i) = ⋃ i, f ⁻¹' (B i) :=
+theorem 02_Functions_22 : f ⁻¹' (⋃ i, B i) = ⋃ i, f ⁻¹' (B i) :=
 by { ext x, simp }
 
-example : f ⁻¹' (⋂ i, B i) = ⋂ i, f ⁻¹' (B i) :=
+theorem 02_Functions_23 : f ⁻¹' (⋂ i, B i) = ⋂ i, f ⁻¹' (B i) :=
 by { ext x, simp }
 
-example : inj_on f s ↔
+theorem 02_Functions_24 : inj_on f s ↔
   ∀ x₁ ∈ s, ∀ x₂ ∈ s, f x₁ = f x₂ → x₁ = x₂ :=
 iff.refl _
 
@@ -127,7 +127,7 @@ end
 section
 open set real
 
-example : inj_on log { x | x > 0 } :=
+theorem 02_Functions_25 : inj_on log { x | x > 0 } :=
 begin
   intros x xpos y ypos,
   intro e,   -- log x = log y
@@ -137,7 +137,7 @@ begin
     ... = y           : by rw exp_log ypos
 end
 
-example : range exp = { y | y > 0 } :=
+theorem 02_Functions_26 : range exp = { y | y > 0 } :=
 begin
   ext y, split,
   { rintros ⟨x, rfl⟩,
@@ -147,16 +147,16 @@ begin
   rw exp_log ypos
 end
 
-example : inj_on sqrt { x | x ≥ 0 } :=
+theorem 02_Functions_27 : inj_on sqrt { x | x ≥ 0 } :=
 sorry
 
-example : inj_on (λ x, x^2) { x : ℝ | x ≥ 0 } :=
+theorem 02_Functions_28 : inj_on (λ x, x^2) { x : ℝ | x ≥ 0 } :=
 sorry
 
-example : sqrt '' { x | x ≥ 0 } = {y | y ≥ 0} :=
+theorem 02_Functions_29 : sqrt '' { x | x ≥ 0 } = {y | y ≥ 0} :=
 sorry
 
-example : range (λ x, x^2) = {y : ℝ  | y ≥ 0} :=
+theorem 02_Functions_30 : range (λ x, x^2) = {y : ℝ  | y ≥ 0} :=
 sorry
 
 end
@@ -170,7 +170,7 @@ variables (P : α → Prop) (h : ∃ x, P x)
 
 #check classical.some h
 
-example : P (classical.some h) := classical.some_spec h
+theorem 02_Functions_31 : P (classical.some h) := classical.some_spec h
 
 noncomputable theory
 open_locale classical
@@ -188,10 +188,10 @@ end
 variable  f : α → β
 open function
 
-example : injective f ↔ left_inverse (inverse f) f  :=
+theorem 02_Functions_32 : injective f ↔ left_inverse (inverse f) f  :=
 sorry
 
-example : surjective f ↔ right_inverse (inverse f) f :=
+theorem 02_Functions_33 : surjective f ↔ right_inverse (inverse f) f :=
 sorry
 
 end

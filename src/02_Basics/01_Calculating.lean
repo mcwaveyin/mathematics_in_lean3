@@ -3,7 +3,7 @@ import data.real.basic
 /- An example. -/
 
 import data.real.basic
-example (a b c : ℝ) : (a * b) * c = b * (a * c) :=
+theorem 01_Calculating_1 (a b c : ℝ) : (a * b) * c = b * (a * c) :=
 begin
   rw mul_comm a b,
   rw mul_assoc b a c
@@ -11,19 +11,19 @@ end
 
 /- Try these.-/
 
-example (a b c : ℝ) : (c * b) * a = b * (a * c) :=
+theorem 01_Calculating_2 (a b c : ℝ) : (c * b) * a = b * (a * c) :=
 begin
   sorry
 end
 
-example (a b c : ℝ) : a * (b * c) = b * (a * c) :=
+theorem 01_Calculating_3 (a b c : ℝ) : a * (b * c) = b * (a * c) :=
 begin
   sorry
 end
 
 /- An example. -/
 
-example (a b c : ℝ) : a * b * c = b * c * a :=
+theorem 01_Calculating_4 (a b c : ℝ) : a * b * c = b * c * a :=
 begin
   rw mul_assoc,
   rw mul_comm
@@ -32,19 +32,19 @@ end
 /- Try doing the first of these without providing any arguments at all,
    and the second with only one argument. -/
 
-example (a b c : ℝ) : a * (b * c) = b * (c * a) :=
+theorem 01_Calculating_5 (a b c : ℝ) : a * (b * c) = b * (c * a) :=
 begin
   sorry
 end
 
-example (a b c : ℝ) : a * (b * c) = b * (a * c) :=
+theorem 01_Calculating_6 (a b c : ℝ) : a * (b * c) = b * (a * c) :=
 begin
   sorry
 end
 
 /- Using facts from the local context. -/
 
-example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) :
+theorem 01_Calculating_7 (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) :
   a * (b * e) = c * (d * f) :=
 begin
   rw h',
@@ -55,20 +55,20 @@ end
 
 /- Try these. For the second one, use the theorem `sub_self`. -/
 
-example (a b c d e f : ℝ) (h : b * c = e * f) :
+theorem 01_Calculating_8 (a b c d e f : ℝ) (h : b * c = e * f) :
   a * b * c * d = a * e * f * d :=
 begin
   sorry
 end
 
-example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 :=
+theorem 01_Calculating_9 (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 :=
 begin
   sorry
 end
 
 /- Examples. -/
 
-example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) :
+theorem 01_Calculating_10 (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) :
   a * (b * e) = c * (d * f) :=
 by rw [h', ←mul_assoc, h, mul_assoc]
 
@@ -76,7 +76,7 @@ section
 
 variables a b c d e f g : ℝ
 
-example (h : a * b = c * d) (h' : e = f) :
+theorem 01_Calculating_11 (h : a * b = c * d) (h' : e = f) :
   a * (b * e) = c * (d * f) :=
 by rw [h', ←mul_assoc, h, mul_assoc]
 
@@ -100,14 +100,14 @@ end
 section
 variables a b : ℝ
 
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+theorem 01_Calculating_12 : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 begin
   rw [mul_add, add_mul, add_mul],
   rw [←add_assoc, add_assoc (a * a)],
   rw [mul_comm b a, ←two_mul]
 end
 
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+theorem 01_Calculating_13 : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 calc
   (a + b) * (a + b)
       = a * a + b * a + (a * b + b * b) :
@@ -118,7 +118,7 @@ calc
           by rw [mul_comm b a, ←two_mul]
 
 
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+theorem 01_Calculating_14 : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 calc
   (a + b) * (a + b)
       = a * a + b * a + (a * b + b * b) :
@@ -134,10 +134,10 @@ end
 section
 variables a b c d : ℝ
 
-example : (a + b) * (c + d) = a * c + a * d + b * c + b * d :=
+theorem 01_Calculating_15 : (a + b) * (c + d) = a * c + a * d + b * c + b * d :=
 sorry
 
-example (a b : ℝ) : (a + b) * (a - b) = a^2 - b^2 :=
+theorem 01_Calculating_16 (a b : ℝ) : (a + b) * (a - b) = a^2 - b^2 :=
 begin
   sorry
 end
@@ -156,7 +156,7 @@ end
 section
 variables a b c d : ℝ
 
-example (a b c d : ℝ) (hyp : c = d * a + b) (hyp' : b = a * d) :
+theorem 01_Calculating_17 (a b c d : ℝ) (hyp : c = d * a + b) (hyp' : b = a * d) :
   c = 2 * a * d :=
 begin
   rw hyp' at hyp,
@@ -166,16 +166,16 @@ begin
   exact hyp
 end
 
-example : (c * b) * a = b * (a * c) :=
+theorem 01_Calculating_18 : (c * b) * a = b * (a * c) :=
 by ring
 
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+theorem 01_Calculating_19 : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 by ring
 
-example : (a + b) * (a - b) = a^2 - b^2 :=
+theorem 01_Calculating_20 : (a + b) * (a - b) = a^2 - b^2 :=
 by ring
 
-example (hyp : c = d * a + b) (hyp' : b = a * d) :
+theorem 01_Calculating_21 (hyp : c = d * a + b) (hyp' : b = a * d) :
   c = 2 * a * d :=
 begin
   rw [hyp, hyp'],
@@ -184,7 +184,7 @@ end
 
 end
 
-example (a b c : ℕ) (h : a + b = c) : (a + b) * (a + b) = a * c + b * c :=
+theorem 01_Calculating_22 (a b c : ℕ) (h : a + b = c) : (a + b) * (a + b) = a * c + b * c :=
 begin
   nth_rewrite 1 h,
   rw add_mul
